@@ -1,0 +1,35 @@
+﻿@model Core.Models.Account
+@{
+    ViewData["Title"] = "Login";
+}
+
+<br />
+<br />
+<br />
+<br />
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-sm-12 col-xm-12 col-md-5 col-lg-5 col-xl-5 m-auto">
+			<h3 class="p font-weight-bold my-3 text-center"> TeeBlog.Com</h3> <br /> <br />
+			<div class="card p-4 bg-light">
+				<form method="POST" asp-action="">
+					<h3 class="h5 font-weight-bold my-3 text-center"> Login</h3>
+					<div class="form-group">
+						<label asp-for="Email"> Email Address </label>
+						<input type="Email" asp-for="Email" id="email" class="form-control" required>
+					</div>
+					<div class="form-group">
+						<label asp-for="Password"> Password</label>
+						<input type="password" asp-for="Password" id="password" class="form-control" required>
+					</div>@*
+					<a class="nav-link text-muted" asp-area="" asp-controller="Account" asp-action="ForgetPassword"> Forget Password? </a>
+					<br />*@
+					<button type="submit" name="submit" onclick="login()" class="btn btn-primary btn-block"> Submit</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div style="margin-top: 150px;"></div>
+

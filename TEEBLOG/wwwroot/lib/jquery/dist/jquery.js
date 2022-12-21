@@ -10865,8 +10865,13 @@ if ( typeof noGlobal === "undefined" ) {
 	window.jQuery = window.$ = jQuery;
 }
 
+	// PRE LOADER
+	
 
 
 
 return jQuery;
-} );
+});
+
+
+

@@ -4,3 +4,7 @@
 
 /TEEBLOG/obj
 /.vs
+/Core/bin/Debug/net6.0
+/Logic/bin/Debug/net6.0
+/TEEBLOG/bin/Debug/net6.0
+/Logic/obj

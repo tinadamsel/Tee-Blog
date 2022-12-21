@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33110.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TEEBLOG", "TEEBLOG\TEEBLOG.csproj", "{E39C812D-D394-462B-88C6-15EADCA36479}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TEEBLOG", "TEEBLOG\TEEBLOG.csproj", "{E39C812D-D394-462B-88C6-15EADCA36479}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Core\Core.csproj", "{6C11C700-BB09-4B55-8DEB-169EA51689D6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Logic", "Logic\Logic.csproj", "{351E84DE-9429-40E1-8887-43E259BEBAF0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{E39C812D-D394-462B-88C6-15EADCA36479}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E39C812D-D394-462B-88C6-15EADCA36479}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E39C812D-D394-462B-88C6-15EADCA36479}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C11C700-BB09-4B55-8DEB-169EA51689D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C11C700-BB09-4B55-8DEB-169EA51689D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C11C700-BB09-4B55-8DEB-169EA51689D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C11C700-BB09-4B55-8DEB-169EA51689D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{351E84DE-9429-40E1-8887-43E259BEBAF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{351E84DE-9429-40E1-8887-43E259BEBAF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{351E84DE-9429-40E1-8887-43E259BEBAF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{351E84DE-9429-40E1-8887-43E259BEBAF0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

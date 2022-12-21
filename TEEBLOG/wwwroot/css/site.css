@@ -14,5 +14,77 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    overflow-x: hidden;
 }
+
+a { text-decoration: none;
+
+}
+.font{font-family: 'Times New Roman';
+      font-size: large;
+
+}
+.font-2 {
+    font-family: 'Times New Roman';
+}
+
+.carousel {
+    margin-bottom: 0rem;
+}
+/* Since positioning the image, we need to help out the caption */
+.carousel-caption {
+    bottom: 8rem;
+    z-index: 10;
+}
+
+/* Declare heights because of positioning of img element */
+.carousel-item {
+    height: 32rem;
+}
+
+.carousel-item-2 {
+    height: 10rem;
+}
+
+.vertical {
+    display: inline;
+    margin-left: 4px;
+    margin-right: 4px;
+    height: 850px;
+    border-left: 1px solid gray;
+
+}
+
+.info {
+    list-style-type: none;
+    padding: 0px;
+}
+
+    .info li {
+        padding-top: 10px;
+        text-align: left;
+        font-size: 1em;
+        border-bottom: 1px dotted black;
+        font-family: 'Times New Roman';
+    }
+
+ .info li a {
+            text-decoration: none;
+            color: gray;
+  }
+
+.info li a:hover {
+                color: ghostwhite;
+   }
+
+.f-2 {
+    width: 100%;
+    color: gray;
+    font-family: 'Times New Roman';
+    background-color:black; 
+    padding: 10px;
+
+}
+
+

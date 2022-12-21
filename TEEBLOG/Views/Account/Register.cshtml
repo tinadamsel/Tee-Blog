@@ -1,0 +1,51 @@
+﻿@model Core.Models.Account
+@{
+    ViewData["Title"] = "Register";
+}
+
+<br />
+<br />
+<br />
+<br />
+<div class="container-fluid"> 
+	<div class="row">
+		<div class="col-sm-12 col-xm-12 col-md-5 col-lg-5 col-xl-5 m-auto"> 
+			<h3 class="p font-weight-bold my-3 text-center"> TeeBlog.Com</h3> <br /> <br />
+			<div class="card p-4 bg-light"> 
+			<form method="POST" asp-action=""> 
+				<h3 class="h5 font-weight-bold my-3 text-center"> Register</h3>
+				<div class="form-group">
+					<label asp-for="FirstName"></label>
+					<input type="text" asp-for="FirstName" id="FirstName" class="form-control" required>
+				</div>
+				<div class="form-group">
+					<label asp-for="LastName"></label>
+					<input type="text" asp-for="LastName" id="LastName" class="form-control" required>
+				</div>
+				<div class="form-group">
+					<label asp-for="Email"> Email Address</label>
+					<input type="Email" asp-for="Email" id="email" class="form-control" required>
+				</div>
+				<div class="form-group">
+					<label asp-for="Password"> Password</label>
+					<input type="password" asp-for="Password" id="Password" class="form-control" required>
+				</div>
+				<div class="form-group">
+					<label asp-for="ComfirmPassword"> Confirm Password</label>
+					<input type="password" asp-for="ComfirmPassword" id="ConfirmPassword" class="form-control" required>
+				</div>
+
+				<div class="form-group form-check">
+					<label class="form-check-label">
+						<input type="checkbox" class="form-check-input">
+						Remember me
+					</label>
+				</div>
+				<button type="submit" name="submit" class="btn btn-primary btn-block"> Submit</button>
+			</form>
+		</div>
+	</div> 
+	</div>
+</div>
+
+<div style="margin-top: 150px;"></div>
