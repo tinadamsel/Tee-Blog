@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - TEEBLOG</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/sweetalert2.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/sweetalert.min.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/TEEBLOG.styles.css" asp-append-version="true" />
+    <link rel="shortcut icon" href="~/img/" type="image/x-icon" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script>
+        function newSuccessAlert(message, url) {
+            debugger;
+            Swal.fire({
+                title: "SUCCEEDED",
+                icon: "success",
+                text: message,
+                confirmButtonColor: "skyblue",
+            }).then((isConfirm) => {
+                if (isConfirm) {
+                    location.href = url;
+                }
+            })
+
+        }
+
+                //function newSweetAlert(msg, url) {
+                //    debugger;
+                //    Swal.fire({
+                //        Icon: 'success',
+                //        text: msg,
+                //        showDenyButton: false,
+                //        showCancelButton: true,
+                //        confirmButtonText: 'Ok',
+                //    }).then((result) => {
+                //        debugger;
+                //        if (result.isConfirmed) {
+                //            debugger;
+                //            location.reload(url);
+                //        }
+                //    })
+                //}
+    </script>
+
+</head>
+<body>
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="footer bg-dark text-white p-3">
+        <div class="container text-center" style="font-family: 'Times New Roman';">
+            <p>  &copy; 2022 - TeeBlog - All Rights Reserved.T<sup>M</sup></p>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrapjs.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    @* <script src="~/lib/jquery/dist/custom.js"></script>*@
+    <script src="~/lib/jquery/dist/smoothscroll.js"></script>
+    <script src="~/lib/jquery/dist/wow.min.js"></script>
+    <script src="~/lib/jquery/dist/owl.carousel.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/Teeblog.js" asp-append-version="true"></script>
+    <script src="~/js/sweetalert2.all.min.js" asp-append-version="true"></script>
+    <script src="~/js/sweetalert.min.js" asp-append-version="true"></script>
+    @*<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>*@
+    @*<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>*@
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
