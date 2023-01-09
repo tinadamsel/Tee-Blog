@@ -57,11 +57,11 @@ a { text-decoration: none;
 }
 
 .info {
-    list-style-type: none;
+    list-style-type:symbols(*);
     padding: 0px;
 }
 
-    .info li {
+ .info li {
         padding-top: 10px;
         text-align: left;
         font-size: 1em;
@@ -87,4 +87,120 @@ a { text-decoration: none;
 
 }
 
+.navbutton {
+    transition: 0.3s ease 0s;
+}
 
+.navbutton:hover {
+        transform: scale(0.8);
+}
+
+
+.blog-inner {
+    background: #ffffff;
+    text-align: center;
+    margin-bottom: 2px;
+}
+
+.blog-img {
+    height: 100%;
+}
+
+.blog-img {
+    overflow: hidden;
+}
+
+.blog-img img {
+        transition: all 0.9s ease 0s;
+    }
+
+.blog-inner:hover .blog-img img {
+    -moz-transform: scale(1.5) rotate(-10deg);
+    -webkit-transform: scale(1.5) rotate(-10deg);
+    -ms-transform: scale(1.5) rotate(-10deg);
+    -o-transform: scale(1.5) rotate(-10deg);
+    transform: scale(1.5) rotate(-10deg);
+}
+
+.blog-inner a {
+    border-radius: 2px;
+    transition: .2s;
+    letter-spacing: 1px;
+    padding: 10px 18px;
+    background: #ffffff;
+    color: #12557f;
+    font-size: 14px;
+    display: inline-block;
+    line-height: 24px;
+}
+
+.fix{position:fixed;
+     bottom:40px;
+     right:10px;
+     text-align:center;
+     width: 230px;
+     padding: 3px;
+     border-radius: 3px;
+     z-index:100;
+}
+.fix a{text-decoration: none;
+       color: white;
+
+}
+.fix a:hover {
+        text-decoration: none;
+        color: white;
+    }
+
+.first{float: left;
+       font-size:70px;
+       display: inline;
+       line-height: 60px;
+       padding-left:5px;
+       font-family: 'Times New Roman';
+       padding-right:5px;
+       padding-top: 5px;
+
+
+}
+.sidebar{
+    height: 80%;
+    position:fixed;
+    left:0;
+    top: 50px;
+    bottom:0;
+    width: 200px;
+    z-index: 900;
+    transition:all 0.4s;
+    padding: 20px;
+    background-color: black;
+}
+.sidebar-nav{
+        padding: 0;
+        margin: 0;
+        list-style: none;
+}
+
+.sidebar-nav li {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.sidebar-nav nav-item{
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+.sidebar-nav .nav-link{
+    display: flex;
+    align-items: center;
+    transition: 0.3s;
+    padding:10px 15px;
+    color: ghostwhite;
+}
+#main{
+    margin-left: 220px;
+    margin-right: 10px;
+
+}

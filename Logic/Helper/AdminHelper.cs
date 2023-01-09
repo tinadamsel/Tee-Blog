@@ -11,11 +11,11 @@ namespace Logic.Helper
 {
 	public class AdminHelper : IAdminHelper
 	{
-		private readonly UserManager<ApplicationUser> _userManager;
-		public AdminHelper(UserManager<ApplicationUser> userManager)
-		{
-			_userManager = userManager;
-		}
+		//private readonly UserManager<ApplicationUser> _userManager;
+		//public AdminHelper(UserManager<ApplicationUser> userManager)
+		//{
+		//	_userManager = userManager;
+		//}
 		
 	}
 }
