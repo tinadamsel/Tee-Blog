@@ -6,11 +6,31 @@ html {
   html {
     font-size: 16px;
   }
+  #master {
+        margin-left: 200px;
+        margin-right: auto;
+        width: 80%;
+    }
+
+   .copyright {
+        padding-top: 30px;
+        padding-bottom: 20px;
+        background-color: black;
+        text-align: center;
+    }
+
+  .footer {
+        padding-bottom: 0px;
+        width: 100%;
+        line-height: 1.6em;
+    }
+
 }
 
 html {
   position: relative;
   min-height: 100%;
+
 }
 
 body {
@@ -164,7 +184,7 @@ a { text-decoration: none;
 
 }
 .sidebar{
-    height: 80%;
+    height: 100%;
     position:fixed;
     left:0;
     top: 50px;
@@ -199,7 +219,7 @@ a { text-decoration: none;
     padding:10px 15px;
     color: ghostwhite;
 }
-#main{
+#master{
     margin-left: 220px;
     margin-right: 10px;
 

@@ -42,9 +42,67 @@ button.accept-policy {
 
 
 .footer {
-    position: absolute;
-    bottom: 0;
+    padding-bottom: 0px;
     width: 100%;
-    white-space: nowrap;
-    line-height: 60px;
+    line-height: 1.6em;
 }
+
+.main {
+    list-style-type: none;
+    padding: 0px;
+}
+
+.main li {
+        padding-top: 10px;
+        text-align: left;
+        font-size: 1em;
+        font-family: 'Times New Roman';
+        color: ghostwhite;
+}
+
+.main li a {
+        text-decoration: none;
+        color: ghostwhite;
+}
+
+.main li a:hover {
+      text-decoration: none;
+      color: white;
+      }
+
+.heading {
+    padding-top: 15px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    font-size: 18px;
+    font-family: 'Times New Roman';
+}
+
+.copyright {
+    padding-top: 30px;
+    padding-bottom: 20px;
+    background-color: black;
+}
+
+.footer-links ul {
+    text-align: left;
+}
+
+.footer-links li {
+    display: inline;
+    padding: 4px;
+}
+
+.footer-links a {
+    font-size: 18px;
+    padding: 5px;
+    color: forestgreen;
+}
+.footer-links a:hover {
+        background-color: forestgreen;
+        color: white;
+        padding: 10px;
+        border-radius: 10px;
+}
+
+
