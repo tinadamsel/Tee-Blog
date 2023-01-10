@@ -20,9 +20,9 @@
             debugger;
             Swal.fire({
                 title: "SUCCEEDED",
-                icon: "success",
+                icon: 'success',
                 text: message,
-                confirmButtonColor: "skyblue",
+                confirmButtonColor: 'blue',
             }).then((isConfirm) => {
                 if (isConfirm) {
                     location.href = url;
@@ -36,7 +36,7 @@
                 icon: 'error',
                 text: message,
                 timer: 60000,
-                confirmButtonColor: "#FF9B44",
+                confirmButtonColor: 'green',
             })
         }
 
@@ -44,7 +44,7 @@
             Swal.fire({
                 icon: 'info',
                 text: message,
-                confirmButtonColor: "#FF9B44",
+                confirmButtonColor: 'green',
             })
         }
 
