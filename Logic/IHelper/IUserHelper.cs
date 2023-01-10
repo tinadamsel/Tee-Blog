@@ -8,12 +8,11 @@ using System.Threading.Tasks;
 
 namespace Logic.IHelper
 {
-    public interface IUserHelper
-    {
+	public interface IUserHelper
+	{
         ApplicationUser FindUserByEmail(string email);
         Task<bool> CreateUser(RegisterViewModel data);
         Task<UserVerification?> CreateUserToken(string userEmail);
-        //Task<bool> MarkTokenAsUsed(UserVerification userVerification);
         bool VerifyUser(Guid token);
 
     }

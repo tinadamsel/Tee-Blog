@@ -1,5 +1,6 @@
-﻿@{
-    ViewData["Title"] = "BlogPost";
+﻿@model Core.Models.Category
+@{
+    ViewData["Title"] = "Edit";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
@@ -36,34 +37,46 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12 col-xm-12 col-md-12 col-lg-12 col-xl-12 m-auto">
-                <ul class="breadcrumb bg-transparent justify-content-start mx-0">
-                    <li class="breadcrumb-item">Dashboard</li>
-                    <li class="breadcrumb-item active">BlogPost</li>
+                <ul class="breadcrumb bg-dark text-white justify-content-start">
+                    <li class="breadcrumb-item">
+                        <a class="text-white" asp-controller="Admin" asp-action="Dashboard">Dashboard</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a class="text-white" asp-controller="Admin" asp-action="Category">Category</a>
+                    </li>
+                    <li class="breadcrumb-item active">
+                        <a class="text-white" asp-controller="Admin" asp-action="Edit">Edit Category</a>
+                    </li>
                 </ul>
             </div>
         </div>
     </div>
     <br /> <br />
-    <div class="col-sm-12 col-xm-12 col-md-8 col-lg-8 col-xl-8">
-        <div class="text-right">
-            <button class="btn btn-success p-2">
-                <a asp-controller="Admin" asp-action="AddBlogPost"> <i class="fa fa-plus"></i>&nbsp; AddBlogPost </a>
-            </button>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-xm-12 col-md-9 col-lg-9 col-xl-9 m-auto">
+                <div class="card bg-light p-2">
+                    <h3 class="h5 font-weight-bold my-3 text-center"> Edit Category </h3>
+                    <form method="POST">
+                        <input asp-for="Id" hidden />
+                        <div class="form-group">
+                            <label asp-for="Name"></label>
+                            <input type="text" asp-for="Name" class="form-control" required>
+                        </div> <br />
+                        <div class="center">
+                            <button type="submit" class="btn btn-success w-25 p-2"> Update Category</button>
+                            &nbsp;
+                            <a class="btn btn-success w-25 p-2" asp-controller="Admin" asp-action="Category"> Back</a>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
-
-    <div class="container-fluid">
-        <table class="table table-bordered table-striped">
-            <thead>
-            <th> Names</th>
-            <th> DateCreated</th>
-            <th> Heading</th>
-            <th> Short Description</th>
-            </thead>
-        </table>
-    </div>
-
 </div>
+
 
 
 
