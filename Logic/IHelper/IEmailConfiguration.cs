@@ -12,5 +12,6 @@ namespace Logic.IHelper
          int SmtpPort { get; set; }
         string SmtpUsername { get; set; }
         string SmtpPassword { get; set; }
+        string AdminEmail { get; set; }
     }
 }

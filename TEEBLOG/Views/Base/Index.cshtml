@@ -1,12 +1,30 @@
-﻿@{
+﻿@model IEnumerable<Core.Models.Blog>
+@{
     ViewData["Title"] = "Index";
 }
 
 <span class="fix text-white bg-success"> <a href="https://chat.whatsapp.com/"> Join our WhatsApp Group</a> </span>
-<div class="container-fluid mt-3">
+<div style="margin-top:60px;"></div>
+<div class="container-fluid p-0 mt-3">
+    <div class="row">
+        <div class="col-sm-12 col-xm-12 col-md-12 col-lg-12 col-xl-12">
+            <div class="row">
+                <div class="col-sm-12 col-xm-12 col-md-12 col-lg-12 col-xl-12 box" style="text-align: left;">
+                    <div style="margin-top:100px;"></div>
+                    <p class="ml-4 font-weight-bold" style="color: #012970; font-family: 'Times New Roman'; font-size: 40px;"> Welcome To Teeblog </p>
+                    <p class="lead font-weight-bold ml-4" style="color: #012970;"> Teebog brings you latest news ranging from health news, <br />all business news, different lifestyles around the world <br /> people and the beauty of their cultures <br /> as well as best news in the entertainment and music industry.</p>
+                    
+                    <a class="h4 btn btn-success mt-3 mx-4" href="#read">Enjoy while reading </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*<div class="container-fluid mt-3">
     <div id="demo" class="carousel slide w-100" data-ride="carousel">
         <div class="carousel-inner">
-            <div class="carousel-item active pb-4">
+            <div class="carousel-item active pb-4"> 
                 <a class="stretched-link" asp-controller="" asp-action="Category">
                     <img src="~/img/bg-testi-1.jpg" width="100%" height="500">
                     <div class="carousel-caption text-left">
@@ -42,18 +60,6 @@
                     </div>
                 </a>
             </div>
-            <div class="carousel-item">
-                <a class="stretched-link" asp-controller="" asp-action="Category">
-                    <img src="~/img/bar-1.jpg" width="100%" height="500">
-                    <div class="carousel-caption text-left">
-                        <h3 class="h4 font-weight-bold">
-                            13 Amazing Poems from Shel Silverstein <br />
-                            with Valuable Life Lessons
-                        </h3>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ratione <br /> suscipit distinctio, beatae explicabo odio voluptatibus quas, <br /> obcaecati, illo et! Incidunt voluptas culpa neque, <br /> accusamus beatae, cumque autem tempore <br />quam eligendi harum debitis. </p>
-                    </div>
-                </a>
-            </div>
         </div>
 
         <!-- Left and right controls -->
@@ -64,10 +70,10 @@
             <span class="carousel-control-next-icon"></span>
         </a>
     </div>
-</div>
+</div>*@
 
 <br />
-<div class="container-fluid" style="box-sizing: border-box;">
+@*<div class="container-fluid" style="box-sizing: border-box;">
     <div class="row">
         <div class="col-sm-12 col-xm-12 col-md-3 col-lg-3 col border border-right border-left-0 border-bottom-0 border-top-0" style="box-sizing: border-box;">
             <div class="text-left">
@@ -154,69 +160,50 @@
             <hr />
         </div>
     </div>
-</div>
+</div>*@
 <br />
 <br />
-<br />
-<h2 class="h1" style="font-family:Times New Roman;">Health</h2>
-<hr />
-<br />
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-sm-12 col-xm-12 col-md-3 col-lg-3 col-xl-3" style="box-sizing: border-box;">
-            <div class="text-left">
-                <p class="h6 text-secondary text-center" style="font-size:12px;"> HEALTH - JULY,2022 </p>
-                <p class="lead text-center" style="font-size:20px; font-family:'Times New Roman', Times, serif; line-height:1.2em;"> <b> 5+ Ways To Keep <br />Your Baby In Check</b> </p>
-                <img src="~/img/baby.jpg" width="80%" class="img-fluid mx-auto d-block"> <br />
-            </div>
-            <div class="text-left">
-                <p class="h6 text-secondary text-center" style="font-size:12px;"> HEALTH - AUGUST,2022 </p>
-                <p class="lead text-center" style="font-size:20px; font-family:'Times New Roman', Times, serif; line-height:1.2em;"> <b> 10 Best Foods <br /> For Pregnant Women</b> </p>
-                <img src="~/img/health-6.jpg" width="80%" class="img-fluid mx-auto d-block"> <br />
-            </div>
-            <div class="text-left">
-                <p class="h6 text-secondary text-center" style="font-size:12px;"> HEALTH - SEPT,2022 </p>
-                <p class="lead text-center" style="font-size:20px; font-family:'Times New Roman', Times, serif; line-height:1.2em;"> <b> Nutritious Foods, <br />Healthy Living</b> </p>
-                <img src="~/img/health-5.jpg" width="80%" class="img-fluid mx-auto d-block"> <br />
+<br/>
+@if (Model.Count() > 0)
+{
+    @foreach (var item in from i in Model.Select((value, index) => new { value, index }) group i.value by i.index / 40 into g select g)
+    {
+        <div class="container" id="read">
+            <div class="row">
+                @foreach (var blog in Model)
+                {
+                    <div class="col-sm-12 col-xm-12 col-md-3 col-lg-3 col-xl-3 mt-3" style="box-sizing: border-box;">
+                        
+                                <p class="h6 text-secondary text-center" style="font-size:12px;"> @blog.Categories.Name </p>
+                                <p class="lead text-center" style="font-size:20px; font-family:'Times New Roman', Times, serif; line-height:1.2em;"> <b> @blog.Name</b> </p>
+                                <a class="stretched-link" style="text-decoration: none;" asp-controller="Category" asp-action="Category">
+                                   <img src="@blog.Picture" width="100%" style="max-height:50%;" class="img-fluid mx-auto d-block"> <br />
+                                   <p class="mx-2 lead text-left">@Html.Raw(@blog.ShortDescription) </p>
+                                </a>
+                                   
+                        
+                    </div>
+                }
+                
             </div>
         </div>
-        <div class="col-sm-12 col-xm-12 col-md-6 col-lg-6 col-xl-6" style="box-sizing: border-box;">
-            <div class="text-left">
-                <p class="h6 text-secondary" style="font-size:12px;"> HEALTH - JULY,2022 </p>
-                <p class="lead" style="font-size:30px; font-family:'Times New Roman', Times, serif; line-height:1.2em;"> <b> 11+ Foods That Helps To Boost Your Immune <br> System Today</b> </p>
-                <img src="~/img/health-2.jpg" width="100%" class="img-fluid"> <br /> <br />
-                <p> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero temporibus repudiandae, inventore pariatur numquam cumque possimus exercitationem? Nihil tempore odit ab minus eveniet praesentium, similique blanditiis molestiae ut saepe perspiciatis officia nemo, eos quae cumque. Accusamus fugiat architecto rerum animi atque eveniet, quo, praesentium dignissimos</p>
-            </div>
-        </div>
-        <div class="col-sm-12 col-xm-12 col-md-3 col-lg-3 col-xl-3" style="box-sizing: border-box;">
-            <div class="text-left">
-                <img src="~/img/health-7.jpg" width="100%" class="img-fluid"> <br /> <br />
-                <p class="h6 text-secondary" style="font-size:12px;"> HEALTH - JULY,2022 </p>
-                <p class="lead" style="font-size:30px; font-family:'Times New Roman', Times, serif; line-height:1.2em;"> <b> Why You Need <br> To Exercise Daily </b> </p>
-                <p> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero temporibus repudiandae, inventore pariatur numquam cumque possimus exercitationem? Nihil tempore odit ab minus eveniet praesentium, similique blanditiis molestiae ut saepe perspiciatis officia nemo, eos quae cumque. Accusamus fugiat architecto rerum animi atque eveniet, quo, praesentium dignissimos</p>
-            </div>
-            <div class="text-left">
-                <img src="~/img/health-8.jpeg" width="80%" class="img-fluid mx-auto d-block"> <br />
-                <p class="h6 text-secondary text-center" style="font-size:12px;"> HEALTH - AUGUST,2022 </p>
-                <p class="lead text-center" style="font-size:20px; font-family:'Times New Roman', Times, serif; line-height:1.2em;"> <b> 10 Nutritious Foods <br /> For Ladies</b> </p>
+    }
+}
 
-            </div>
-        </div>
-    </div>
-</div>
+<br /> <br />
 
-<br />
-<br />
-<h2 class="h1" style="font-family:Times New Roman;">Business</h2>
-<hr />
-<br />
-<div class="container-fluid">
+
+<div class="container mt-4">
     <div class="row">
         <div class="col-sm-12 col-xm-12 col-md-6 col-lg-6 col-xl-6" style="box-sizing: border-box;">
             <div class="text-left">
                 <p class="h6 text-secondary" style="font-size:12px;"> BUSINESS - JULY,2022 </p>
                 <p class="lead" style="font-size:30px; font-family:'Times New Roman', Times, serif; line-height:1.2em;"> <b> All You Need To <br> Begin As A Programmer Today</b> </p>
-                <img src="~/img/biz-1.jpg" width="100%" class="img-fluid"> <br /> <br />
+                <div class="blog-inner">
+                    <div class="blog-img">
+                        <img src="~/img/biz-1.jpg" width="100%" class="img-fluid"> <br /> <br />
+                    </div>
+                </div>
                 <p> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero temporibus repudiandae, inventore pariatur numquam cumque possimus exercitationem? Nihil tempore odit ab minus eveniet praesentium, similique blanditiis molestiae ut saepe perspiciatis officia nemo, eos quae cumque. Accusamus fugiat architecto rerum animi atque eveniet, quo, praesentium dignissimos</p>
             </div>
         </div>
@@ -224,7 +211,11 @@
             <div class="text-left">
                 <p class="h6 text-secondary text-center" style="font-size:12px;"> BUSINESS - JULY,2022 </p>
                 <p class="lead text-center" style="font-size:20px; font-family:'Times New Roman', Times, serif; line-height:1.2em;"> <b> 5+ Ways To Keep <br />Your Employees In Check</b> </p>
-                <img src="~/img/biz-4.jpg" width="80%" class="img-fluid mx-auto d-block"> <br />
+                <div class="blog-inner">
+                    <div class="blog-img">
+                        <img src="~/img/biz-4.jpg" width="80%" class="img-fluid mx-auto d-block"> <br />
+                    </div>
+                </div>
             </div>
             <div class="text-left">
                 <p class="h6 text-secondary text-center" style="font-size:12px;"> BUSINESS - AUGUST,2022 </p>
@@ -255,28 +246,7 @@
 
 </div>
 
-<ul class="pagination justify-content-end">
-    <li class="page-item active">
-        <a asp-controller="Base" asp-action="Index" class="page-link"> 1 </a>
-    </li>
-    <li class="page-item">
-        <a asp-controller="Base" asp-action="Index" class="page-link"> 2 </a>
-    </li>
-    <li class="page-item">
-        <a asp-controller="Base" asp-action="Index" class="page-link"> 3 </a>
-    </li>
-    <li class="page-item">
-        <a asp-controller="Base" asp-action="Index" class="page-link"> 4 </a>
-    </li>
-    <li class="page-item">
-        <a asp-controller="Base" asp-action="Index" class="page-link"> Next </a>
-    </li>
-</ul>
-
-<div style="margin-top: 50px;"></div>
-
-
-
+<div style="margin-top: 20px;"></div>
 
 
 

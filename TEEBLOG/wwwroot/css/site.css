@@ -41,12 +41,16 @@ body {
 a { text-decoration: none;
 
 }
+.icon {
+    color:#899bbd;
+}
 .font{font-family: 'Times New Roman';
       font-size: large;
 
 }
 .font-2 {
     font-family: 'Times New Roman';
+    color: #012970;
 }
 
 .carousel {
@@ -77,7 +81,7 @@ a { text-decoration: none;
 }
 
 .info {
-    list-style-type:symbols(*);
+    list-style-type: circle;
     padding: 0px;
 }
 
@@ -172,7 +176,7 @@ a { text-decoration: none;
         color: white;
     }
 
-.first{float: left;
+/*.first{float: left;
        font-size:70px;
        display: inline;
        line-height: 60px;
@@ -182,18 +186,20 @@ a { text-decoration: none;
        padding-top: 5px;
 
 
-}
-.sidebar{
+}*/
+.sidebar {
     height: 100%;
-    position:fixed;
-    left:0;
+    position: fixed;
+    left: 0;
     top: 50px;
-    bottom:0;
-    width: 200px;
+    bottom: 0;
+    width: 230px;
     z-index: 900;
-    transition:all 0.4s;
+    transition: all 0.4s;
     padding: 20px;
-    background-color: black;
+}
+.beside{
+    color: midnightblue;
 }
 .sidebar-nav{
         padding: 0;
@@ -219,8 +225,47 @@ a { text-decoration: none;
     padding:10px 15px;
     color: ghostwhite;
 }
-#master{
-    margin-left: 220px;
+#master {
+    margin-left: 180px;
     margin-right: 10px;
+}
+.search-bar {
+    top: 50px;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    box-shadow: 0px 0px 15px 0px rgba(1, 41, 112, 0.1);
+  
+    transition: 0.3s;
+}
+
+.search-bar-show {
+    top: 60px;
+    visibility: visible;
+    opacity: 1;
+}
+.search-form input {
+    border: 0;
+    font-size: 14px;
+    color: #012970;
+    border: 1px solid rgba(1, 41, 112, 0.2);
+    padding: 7px 38px 7px 8px;
+    border-radius: 3px;
+    transition: 0.3s;
+    width: 100%;
+}
+
+
+.box {
+    background: url('../img/blogpic-4.jpg');
+    /*-webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;*/
+    background-size: cover;
+    background-position:revert;
+    min-height: 550px;
+    width: 100%;
+    background-attachment: fixed;
+    text-align:left;
 
 }

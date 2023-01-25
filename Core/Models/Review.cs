@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Core.Models
 {
-	public class Review
+	public class Review 
 	{
 		public int Id { get; set; }
 		public int BlogId { get; set; }
@@ -18,6 +18,7 @@ namespace Core.Models
 		public virtual Customer? Customers { get; set; }
 		public string? Message { get; set; }
 		public DateTime Date { get; set; }
+		public bool isApproved { get; set; }
 
 	}
 }

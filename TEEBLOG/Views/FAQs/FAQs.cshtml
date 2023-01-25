@@ -1,0 +1,131 @@
+﻿
+@{
+    ViewData["Title"] = "FAQs";
+    
+}
+
+<div style="margin-top: 100px;"></div>
+<div class="container-fluid" id="master">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-xm-12 col-md-12 col-lg-12 col-xl-12">
+                <h4 class="font-weight-bold mx-3" style="color: #012970;">FAQs</h4>
+                <ul class="breadcrumb bg-transparent justify-content-start font-weight-bold" style="color:#899bbd;">
+                    <li class="breadcrumb-item">Home</li>
+                    <li class="breadcrumb-item active" style="color: #51678f;">FAQs</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12 col-xm-12 col-md-12 col-lg-12 col-xl-12">
+            <div class="card p-2 bg-white" style="color: #51678f;">
+                <div class="card-body">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" href="#general"><b>General</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#posts"><b> Posts</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#admins"><b> Admins</b></a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane container active" id="general">
+                            <div class="mt-4">
+                                <h6 class="font-weight-bold">What is the Blog about? </h6>
+                                <p class="p"> This blog centers on bringing latest news ranging from health news, all business news, different lifestyles around the world, as well as best news in the entertainment and music industry.</p>
+                            </div>
+                            <div class="m-1">
+                                <h6 class="font-weight-bold">What is the maximum post i can make a day? </h6>
+                                <p class="p"> You can make 10 to 15 reasonable posts a day</p>
+                            </div>
+                            <div class="m-1">
+                                <h6 class="font-weight-bold">How do i make a post? </h6>
+                                <p class="p"> Log into your account, click on blog post, go to add blog post, fill in the necessary information and submit.</p>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane container fade" id="posts"> 
+                            <div class="mt-4">
+                                <h6 class="font-weight-bold">What is the maximum post i can make a day? </h6>
+                                <p class="p"> You can make 10 to 15 reasonable posts a day</p>
+                            </div>
+                            <div class="m-1">
+                                <h6 class="font-weight-bold">How do i make a post? </h6>
+                                <p class="p"> Log into your account, click on blog post, go to add blog post, fill in the necessary information and submit.</p>
+                            </div>
+                        </div>
+                        <div class="tab-pane container fade" id="admins">
+                            <div class="mt-4">
+                                <h6 class="font-weight-bold">How can i become an Admin? </h6>
+                                <p class="p">Log into our registration page and fill in you details, make sure to provide an active email. Once ur email is verified, you can log in an an admin. </p>
+                            </div>
+                            <div class="mt-4">
+                                <h6 class="font-weight-bold">What is the role of the Admins? </h6>
+                                <p class="p">The Admins are in charge of blog posting and this is done on a daily basis </p>
+                            </div>
+                            <div class="m-1">
+                                <h6 class="font-weight-bold"> Can i post if am not an Admin? </h6>
+                                <p class="p"> No ... You cannot post </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br /> <br />
+<div style="margin-top:80px;"></div>
+    @*<div class="container">
+    <div class="card p-4 bg-white rounded">
+    @if (Model.Count() > 0)
+    {
+    <table class="table table-borderedless" width="100%" style="color:#51678f;">
+    <thead>
+    <th> Name</th>
+    <th> Active</th>
+    <th> Deleted </th>
+    <th> Date Created </th>
+    <th> </th>
+    </thead>
+
+    <tbody>
+    @foreach (var category in Model)
+    {
+    <tr>
+    <td width="20%">@category.Name</td>
+    <td width="20%">@category.Active </td>
+    <td width="20%">@category.Deleted </td>
+    <td width="20%">@category.DateCreated </td>
+    <td width="20%">
+    <div class="w-50 btn-group">
+    <a asp-controller="Admin" asp-route-id="@category.Id" asp-action="Edit" class="btn btn-outline-secondary  mx-2" style="border-radius: 8px;"><i class="fa fa-edit"></i></a>
+    <a asp-controller="Admin" asp-route-id="@category.Id" asp-action="Delete" class="btn btn-outline-secondary mx-2" style="border-radius: 8px;"><i class="fa fa-trash"></i></a>
+    </div>
+    </td>
+    </tr>
+    }
+    </tbody>
+    </table>
+    }
+    else
+    {
+    <p> No Category added </p>
+    }
+
+    </div>
+    </div>*@
+
+</div>
+
+
+
+
+
+

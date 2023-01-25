@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -12,17 +13,16 @@
     <link rel="stylesheet" href="~/css/sweetalert.min.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/TEEBLOG.styles.css" asp-append-version="true" />
     <link rel="shortcut icon" href="~/img/" type="image/x-icon" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
 
     <script>
         function newSuccessAlert(message, url) {
             debugger;
             Swal.fire({
                 title: "SUCCEEDED",
-                icon: 'success',
+                icon: "success",
                 text: message,
-                confirmButtonColor: 'blue',
+                confirmButtonColor: 'Green',
             }).then((isConfirm) => {
                 if (isConfirm) {
                     location.href = url;
@@ -33,7 +33,7 @@
 
         function errorAlert(message) {
             Swal.fire({
-                icon: 'error',
+                icon: "error",
                 text: message,
                 timer: 60000,
                 confirmButtonColor: 'green',
@@ -42,7 +42,7 @@
 
         function infoAlert(message) {
             Swal.fire({
-                icon: 'info',
+                icon: "info",
                 text: message,
                 confirmButtonColor: 'green',
             })
@@ -89,24 +89,43 @@
                             <a class="nav-link text-dark font" asp-controller="Category" asp-action="Category"> Category </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark font" asp-controller="Blog" asp-action="Blog">Blog</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link text-dark font" asp-controller="Video" asp-action="Video">Videos</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark font" asp-controller="Base" asp-action="About">About</a>
+                        </li> 
+                        <li class="nav-item">
+                            <a class="nav-link text-dark font" asp-controller="FAQs" asp-action="FAQs">FAQs</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark font" asp-controller="Base" asp-action="Contact">Contact</a>
+                            <a class="nav-link text-dark font" asp-controller="Contact" asp-action="Contact">Contact</a>
                         </li>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-white font btn btn-success m-2 p-2" asp-action="Dashboard" asp-controller="Admin">Dashboard</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-white font btn btn-success m-2 p-2" asp-action="Login" asp-controller="Account">Login</a>
+                            </li>
+                        }
+                        @if (!User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-white font btn btn-success m-2 p-2" asp-action="Register" asp-controller="Account">Register</a>
+                            </li>
+                        }
+                        
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
 
-    <div class="container">
+    <div class="container-fluid">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
@@ -118,9 +137,9 @@
                 <div class="row">
                     <div class="col-sm-12 col-xm-12 col-md-5 col-lg-5 col-xl-5">
                         <h4 class="h6 heading"> About Teeblog</h4>
-                        <p> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero temporibus repudiandae, inventore pariatur numquam cumque possimus exercitationem? Nihil tempore odit ab minus eveniet praesentium, similique blanditiis molestiae ut saepe perspiciatis officia nemo, eos quae cumque.</p>
+                        <p class="p lead" style="font-family:'Times New Roman';">Teebog brings you latest news ranging from health news, all business news, different lifestyles around the world people and the beauty of their cultures as well as best news in the entertainment and music industry. </p>
                     </div>
-                    <div class="col-sm-12 col-xm-12 col-md-2 col-lg-2 col-xl-2">
+                    <div class="col-sm-6 col-xm-6 col-md-2 col-lg-2 col-xl-2">
                         <h4 class="h6 heading"> Categories</h4>
                         <ul class="main">
                             <li class="navbutton">
@@ -146,7 +165,7 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="col-sm-12 col-xm-12 col-md-2 col-lg-2 col-xl-2">
+                    <div class="col-sm-6 col-xm-6 col-md-2 col-lg-2 col-xl-2">
                         <h4 class="h6 heading"> Navigation</h4>
                         <ul class="main">
                             <li class="navbutton">
@@ -159,18 +178,18 @@
                                 <a class="text-light" asp-controller="Blog" asp-action="Blog"><i class="fa fa-angle-double-right"></i> Blog</a>
                             </li>
                             <li class="navbutton">
-                                <a class="text-light" asp-controller="Videos" asp-action="Videos"><i class="fa fa-angle-double-right"></i> Videos</a>
+                                <a class="text-light" asp-controller="FAQs" asp-action="FAQs"><i class="fa fa-angle-double-right"></i> FAQs</a>
                             </li>
                             <li class="navbutton">
                                 <a class="text-light" asp-controller="Base" asp-action="About"><i class="fa fa-angle-double-right"></i> About</a>
                             </li>
                         </ul>
                     </div>
-                    <div class="col-sm-12 col-xm-12 col-md-3 col-lg-3 col-xl-3">
+                    <div class="col-sm-12 col-xm-12 col-md-3 col-lg-3 col-xl-3" style="font-family:'Times New Roman';">
                         <h4 class="h6 heading"> Reach Us</h4>
-                        <p> Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+                        <p> Church Street, Ugboezeji, Abakpa Nike, Enugu, Nigeria</p>
                         <p> +234 98 6783 5432</p>
-                        <p> hello@teeblocg.com</p>
+                        <p> hello@teeblog.com</p>
                         <div class="text-left footer-links">
                             <span><a href="#"><i class="fa fa-instagram"></i></a></span> &nbsp;
                             <span><a href="#"><i class="fa fa-facebook"></i></a></span> &nbsp;
@@ -178,9 +197,7 @@
                             <span><a href="#"><i class="fa fa-skype"></i></a></span> &nbsp;
                             <span><a href="#"><i class="fa fa-linkedin"></i></a></span>
                         </div>
-
                     </div>
-
                 </div>
             </div>
         </div>

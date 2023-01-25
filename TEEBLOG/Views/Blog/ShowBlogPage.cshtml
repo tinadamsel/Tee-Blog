@@ -1,0 +1,45 @@
+﻿@model Core.Models.Blog
+
+<div style="margin-top: 100px;"></div>
+<div class="container p-2 mt-2">
+    <div class="row">
+        <div class="col-sm-12 col-xm-12 col-md-9 col-lg-9 col-xl-9">
+            @if (Model != null)
+            {
+
+                <div class="row">
+                    <div class="col-sm-12 col-xm-12 col-md-12 col-lg-12 col-xl-12">
+                        <p class="h6 text-secondary mx-0" style="font-size:12px;"> @Model.DateCreated.ToString("M")</p>
+                        <p class="lead mx-0" style="font-size:30px; font-family:'Times New Roman'; line-height:1.1em;"> <b>@Model.Name</b> </p>
+                        <p class="" style="margin-right:10%;"> @Html.Raw(@Model.ShortDescription)</p>
+                        <br />
+                        <div class="blog-inner">
+                            <div class="blog-img">
+                               
+                                    <img src="@Model.Picture" width="100%" class="img-fluid">
+                              
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-xm-12 col-md-12 col-lg-12 col-xl-12">
+                        <p class="mx-3">@Html.Raw(Model.Description) </p>
+                    </div>
+                </div>
+            }
+            <br /> <br />
+            <div class="col-sm-12 col-xm-12 col-md-9 col-lg-9 col-xl-9 card">
+                @*<div class="text-center p-2 mx-4" style="color: #012970;">
+                       <button type="submit" onclick="" class="btn btn-primary w-25 p-2 float-left"> Approve </button>
+                       <button type="reset"  onclick="" class="btn btn-primary w-25 p-2 float-right"> Decline </button>
+
+                </div>*@
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div style="margin-top: 100px;"></div>
+
+

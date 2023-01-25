@@ -1,0 +1,172 @@
+﻿@model IEnumerable<Core.Models.ApplicationUser>
+
+@{
+    ViewData["Title"] = "Profile";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div style="margin-top: 100px;"></div>
+    <div class="container-fluid" id="master">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-xm-12 col-md-12 col-lg-12 col-xl-12">
+                    <h4 class="font-weight-bold mx-3" style="color: #012970;">Profile</h4>
+                    <ul class="breadcrumb bg-transparent justify-content-start font-weight-bold" style="color:#899bbd;">
+                        <li class="breadcrumb-item">User</li>
+                        <li class="breadcrumb-item active" style="color: #51678f;">Profile</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    
+    <div class="row">
+        <div class="col-sm-12 col-xm-12 col-md-5 col-lg-5 col-xl-5">
+            <div class="card p-2 bg-white" style="color: #51678f;">
+                <img src="~/img/baby.jpg" class="img-fluid rounded-circle w-50 m-auto d-block" />
+                    <div class="w-50 btn-group mx-auto px-4">
+                        <a asp-controller="Profile" asp-route-id="" asp-action="Edit" class=" mx-2"><i class="fa fa-upload"></i></a>
+                        <a asp-controller="Profile" asp-route-id="" asp-action="Delete" class="mx-2"><i class="fa fa-trash"></i></a>
+                    </div>
+                <div class="card-body text-center">
+                    <h3 class="font-weight-bold">Teena Ugwu</h3>
+                    <p> Frontend Dev.</p>
+                    <div class="text-center footer-links">
+                        <span><a href="#"><i class="fa fa-instagram"></i></a></span> &nbsp;
+                        <span><a href="#"><i class="fa fa-facebook"></i></a></span> &nbsp;
+                        <span><a href="#"><i class="fa fa-twitter"></i></a></span> &nbsp;
+                        <span><a href="#"><i class="fa fa-linkedin"></i></a></span>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="card p-2 bg-white" style="color: #51678f;">
+                <div class="mt-3">
+                    <h5 class="font-weight-bold float-left ml-2"> Social Media</h5>
+                    <div class="w-50 btn-group float-right justify-content-end">
+                        <a asp-controller="Profile" asp-route-id="" asp-action="Edit" class=" mx-2" ><i class="fa fa-edit"></i></a>
+                      </div>
+                </div>
+                <div class="card-body text-left">
+                    <div class="row p-2">
+                        <div class="col-sm-12 col-xm-12 col-md-8 col-lg-8 col-xl-8 font-weight-bold">Instagram:</div>
+                        <div class="col-sm-12 col-xm-12 col-md-4 col-lg-4 col-xl-4">Teena</div>
+                    </div>
+                    <div class="row p-2">
+                        <div class="col-sm-12 col-xm-12 col-md-8 col-lg-8 col-xl-8 font-weight-bold">Facebook:</div>
+                        <div class="col-sm-12 col-xm-12 col-md-4 col-lg-4 col-xl-4">@*@category.FirstName*@</div>
+                    </div>
+                    <div class="row p-2">
+                        <div class="col-sm-12 col-xm-12 col-md-8 col-lg-8 col-xl-8 font-weight-bold">Twitter:</div>
+                        <div class="col-sm-12 col-xm-12 col-md-4 col-lg-4 col-xl-4">@*@category.FirstName*@</div>
+                    </div>
+                    <div class="row p-2">
+                        <div class="col-sm-12 col-xm-12 col-md-8 col-lg-8 col-xl-8 font-weight-bold">Linkedin:</div>
+                        <div class="col-sm-12 col-xm-12 col-md-4 col-lg-4 col-xl-4">@*@category.FirstName*@</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-xm-12 col-md-7 col-lg-7 col-xl-7">
+            <div class="card p-2 bg-white" style="color: #51678f;">
+                <div class="mt-3">
+                    <h5 class="font-weight-bold float-left ml-2"> User Details</h5>
+                    <div class="w-50 btn-group float-right justify-content-end">
+                        <a asp-controller="Profile" asp-route-id="" asp-action="Edit" class=" mx-2"><i class="fa fa-edit"></i></a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row p-2">
+                        <div class="col-sm-12 col-xm-12 col-md-4 col-lg-4 col-xl-4 font-weight-bold">First Name:</div>
+                        <div class="col-sm-12 col-xm-12 col-md-8 col-lg-8 col-xl-8">Teena</div>
+                    </div>
+                    <div class="row p-2">
+                        <div class="col-sm-12 col-xm-12 col-md-4 col-lg-4 col-xl-4 font-weight-bold">Last Name:</div>
+                        <div class="col-sm-12 col-xm-12 col-md-8 col-lg-8 col-xl-8">@*@category.FirstName*@</div>
+                    </div>
+                    <div class="row p-2">
+                        <div class="col-sm-12 col-xm-12 col-md-4 col-lg-4 col-xl-4 font-weight-bold">Email:</div>
+                        <div class="col-sm-12 col-xm-12 col-md-8 col-lg-8 col-xl-8">@*@category.FirstName*@</div>
+                    </div>
+                    <div class="row p-2">
+                        <div class="col-sm-12 col-xm-12 col-md-4 col-lg-4 col-xl-4 font-weight-bold">Phone:</div>
+                        <div class="col-sm-12 col-xm-12 col-md-8 col-lg-8 col-xl-8">@*@category.FirstName*@</div>
+                    </div>
+                    <div class="row p-2">
+                        <div class="col-sm-12 col-xm-12 col-md-4 col-lg-4 col-xl-4 font-weight-bold">Job:</div>
+                        <div class="col-sm-12 col-xm-12 col-md-8 col-lg-8 col-xl-8">@*@category.FirstName*@</div>
+                    </div>
+                    <div class="row p-2">
+                        <div class="col-sm-12 col-xm-12 col-md-4 col-lg-4 col-xl-4 font-weight-bold">Address:</div>
+                        <div class="col-sm-12 col-xm-12 col-md-8 col-lg-8 col-xl-8">@*@category.FirstName*@</div>
+                    </div>
+                    <div class="row p-2">
+                        <div class="col-sm-12 col-xm-12 col-md-4 col-lg-4 col-xl-4 font-weight-bold">Country:</div>
+                        <div class="col-sm-12 col-xm-12 col-md-8 col-lg-8 col-xl-8">@*@category.FirstName*@</div>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="card p-2 bg-white" style="color: #51678f;">
+                <div class="mt-3">
+                    <h5 class="font-weight-bold float-left ml-2"> About</h5>
+                    <div class="w-50 btn-group float-right justify-content-end">
+                        <a asp-controller="Profile" asp-route-id="" asp-action="Edit" class=" mx-2"><i class="fa fa-edit"></i></a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <p class="p"> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero temporibus repudiandae, inventore pariatur numquam cumque possimus exercitationem? Nihil tempore odit ab minus eveniet praesentium, similique blanditiis molestiae ut saepe</p>
+                    <p> @*@category.About*@</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    @*<div class="container">
+        <div class="card p-4 bg-white rounded">
+            @if (Model.Count() > 0)
+                {
+                <table class="table table-borderedless" width="100%" style="color:#51678f;">
+                    <thead>
+                    <th> Name</th>
+                    <th> Active</th>
+                    <th> Deleted </th>
+                    <th> Date Created </th>
+                    <th> </th>
+                    </thead>
+
+                    <tbody>
+                        @foreach (var category in Model)
+                        {
+                            <tr>
+                                <td width="20%">@category.Name</td>
+                                <td width="20%">@category.Active </td>
+                                <td width="20%">@category.Deleted </td>
+                                <td width="20%">@category.DateCreated </td>
+                                <td width="20%">
+                                    <div class="w-50 btn-group">
+                                        <a asp-controller="Admin" asp-route-id="@category.Id" asp-action="Edit" class="btn btn-outline-secondary  mx-2" style="border-radius: 8px;"><i class="fa fa-edit"></i></a>
+                                        <a asp-controller="Admin" asp-route-id="@category.Id" asp-action="Delete" class="btn btn-outline-secondary mx-2" style="border-radius: 8px;"><i class="fa fa-trash"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <p> No Category added </p>
+            }
+
+        </div>
+    </div>*@
+    
+</div>
+
+
+
+
+
+
