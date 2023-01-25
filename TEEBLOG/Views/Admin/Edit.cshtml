@@ -1,52 +1,19 @@
 ﻿@model Core.Models.Category
 @{
     ViewData["Title"] = "Edit";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml"; 
 }
 
-<aside class="sidebar">
-    <ul class="sidebar-nav mt-3">
-        <li class="nav-item">
-            <a class="nav-link text-white" asp-controller="Admin" asp-action="Dashboard"> <i class="fa fa-user"></i>&nbsp; Dashboard </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-white" asp-controller="Admin" asp-action="Category"> <i class="fa fa-book"></i>&nbsp; Category </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-white" asp-controller="Admin" asp-action="BlogPost"> <i class="fa fa-user"></i>&nbsp; BlogPost </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-white" asp-controller="Admin" asp-action="Videos"> <i class="fa fa-user"></i>&nbsp; Videos </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-white" asp-controller="Admin" asp-action="Music"> <i class="fa fa-music"></i>&nbsp; Music </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-white" asp-controller="Admin" asp-action="Profile"> <i class="fa fa-user"></i>&nbsp; Profile </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-white" asp-controller="Admin" asp-action="FAQs"> <i class="fa fa-question-circle"></i>&nbsp; FAQs </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-white" asp-controller="Account" asp-action="Login"> <i class="fa fa-sign-out"></i>&nbsp; Logout </a>
-        </li>
-    </ul>
-</aside>
+
 <div style="margin-top: 100px;"></div>
 <div class="container-fluid" id="master">
     <div class="container">
         <div class="row">
-            <div class="col-sm-12 col-xm-12 col-md-12 col-lg-12 col-xl-12 m-auto">
-                <ul class="breadcrumb bg-dark text-white justify-content-start">
-                    <li class="breadcrumb-item">
-                        <a class="text-white" asp-controller="Admin" asp-action="Dashboard">Dashboard</a>
-                    </li>
-                    <li class="breadcrumb-item">
-                        <a class="text-white" asp-controller="Admin" asp-action="Category">Category</a>
-                    </li>
-                    <li class="breadcrumb-item active">
-                        <a class="text-white" asp-controller="Admin" asp-action="Edit">Edit Category</a>
-                    </li>
+            <div class="col-sm-12 col-xm-12 col-md-12 col-lg-12 col-xl-12">
+                <h4 class="font-weight-bold mx-3" style="color: #012970;">Edit Category</h4>
+                <ul class="breadcrumb bg-transparent justify-content-start font-weight-bold" style="color:#899bbd;">
+                    <li class="breadcrumb-item">Category</li>
+                    <li class="breadcrumb-item active" style="color: #51678f;">Edit Category</li>
                 </ul>
             </div>
         </div>
@@ -56,8 +23,8 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12 col-xm-12 col-md-9 col-lg-9 col-xl-9 m-auto">
-                <div class="card bg-light p-2">
-                    <h3 class="h5 font-weight-bold my-3 text-center"> Edit Category </h3>
+                <div class="card bg-white p-2">
+                    <h3 class="h5 font-weight-bold my-3 text-center" style="color: #012970;"> Edit Category </h3>
                     <form method="POST">
                         <input asp-for="Id" hidden />
                         <div class="form-group">
@@ -69,7 +36,6 @@
                             &nbsp;
                             <a class="btn btn-success w-25 p-2" asp-controller="Admin" asp-action="Category"> Back</a>
                         </div>
-
                     </form>
                 </div>
             </div>

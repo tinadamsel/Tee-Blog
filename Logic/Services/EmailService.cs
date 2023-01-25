@@ -1,4 +1,5 @@
-﻿using Logic.IHelper;
+﻿using Core.Models;
+using Logic.IHelper;
 using MailKit.Security;
 using MimeKit;
 using MimeKit.Text;
@@ -15,6 +16,7 @@ namespace Logic.Services
     {
         bool SendEmail(string toEmail, string subject, string message);
         void Send(EmailMessage emailMessage);
+        bool SendAdminEmail(string toEmail, string subject, string message);
     }
 
     public class EmailService : IEmailService
@@ -25,6 +27,40 @@ namespace Logic.Services
             _emailConfiguration = emailConfiguration;
         }
         public bool SendEmail(string toEmail, string subject, string message)
+        {
+            EmailAddress fromAddress = new EmailAddress()
+            {
+                Name = "TeeBlog Support Team",
+                Address = _emailConfiguration.SmtpUsername,
+            };
+            List<EmailAddress> fromAddressList = new List<EmailAddress>
+            {
+                        fromAddress
+            };
+            EmailAddress toAddress = new EmailAddress()
+            {
+                Address = toEmail
+            };
+            List<EmailAddress> toAddressList = new List<EmailAddress>
+            {
+                toAddress
+            };
+
+            EmailMessage emailMessage = new EmailMessage()
+            {
+                FromAddresses = fromAddressList,
+                ToAddresses = toAddressList,
+                Subject = subject,
+                Content = message
+            };
+
+            Send(emailMessage);
+
+            //CallHangfire(emailMessage);
+            return true;
+        }
+
+        public bool SendAdminEmail(string toEmail, string subject, string message)
         {
             EmailAddress fromAddress = new EmailAddress()
             {

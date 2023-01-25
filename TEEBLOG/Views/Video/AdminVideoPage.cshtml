@@ -1,0 +1,87 @@
+﻿@model IEnumerable<Core.Models.Video>
+
+@{
+    ViewData["Title"] = "Video";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div style="margin-top: 100px;"></div>
+<div class="container-fluid" id="master">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-xm-12 col-md-12 col-lg-12 col-xl-12">
+                <h4 class="font-weight-bold mx-3" style="color: #012970;">Videos</h4>
+                <ul class="breadcrumb bg-transparent justify-content-start font-weight-bold" style="color:#899bbd;">
+                    <li class="breadcrumb-item">Home</li>
+                    <li class="breadcrumb-item active" style="color: #51678f;">Videos</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6 text-right">
+                <div class="search-bar">
+                    <form class="search-form d-flex align-items-center" method="POST" action="#">
+                        <input type="text" name="serach" placeholder="Search" title="Enter search">
+
+                    </form>
+                </div>
+            </div>
+            <div class="col-6 text-center">
+                <div class="card p-2 bg-white">
+                    <p class="p-3 text-center" style="color: #012970;">
+                        <a asp-controller="Video" asp-action="AddVideo" class="font-weight-bold" style="text-decoration: none; color: #012970;"> <i class="fa fa-plus"></i>&nbsp; Add Video </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+
+    <div class="container">
+        <div class="card p-4 bg-white rounded">
+            @if (Model.Count() > 0)
+            {
+                <table class="display table table-borderless" id="table-show" width="100%" style="color:#51678f;">
+                    <thead>
+                        <tr>
+                            <th> Name</th>
+@*                            <th> ShortDescription</th>*@
+                            <th> Link </th>
+                            <th> Date Created </th>
+                            <th> Actions</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (var video in Model)
+                        {
+                            <tr>
+                                <td width="20%">@video.Name</td>
+@*                                <td width="20%">@video.ShortDescription </td>*@
+                                <td width="20%">@video.Link </td>
+                                <td width="20%">@video.DateCreated </td>
+                                <td width="20%">
+                                    <div class="w-50 btn-group">
+                                        <a asp-controller="Admin" asp-route-id="@video.Id" asp-action="Edit" class="btn btn-outline-secondary  mx-2" style="border-radius: 8px;"><i class="fa fa-edit"></i></a>
+                                        <a asp-controller="Admin" asp-route-id="@video.Id" asp-action="Delete" class="btn btn-outline-secondary mx-2" style="border-radius: 8px;"><i class="fa fa-trash"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <p> No Videos added </p>
+            }
+
+        </div>
+    </div>
+
+</div>
+
+
+
+

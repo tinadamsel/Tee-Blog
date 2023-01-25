@@ -1,0 +1,115 @@
+﻿@model Core.ViewModels.BlogViewModel
+
+<span class="fix text-white bg-success"> <a href="https://chat.whatsapp.com/"> Join our WhatsApp Group</a> </span>
+<div style="margin-top: 100px;"></div>
+<div class="container p-2 mt-2">
+    <div class="row">
+        <div class="col-sm-12 col-xm-12 col-md-9 col-lg-9 col-xl-9">  
+            @if (Model != null)
+            {
+                    <div class="row">
+                        <div class="col-sm-12 col-xm-12 col-md-12 col-lg-12 col-xl-12">
+                        <p class="h6 text-secondary mx-0" style="font-size:12px;"> @Model?.DateCreated</p>
+                            <p class="lead mx-0" style="font-size:30px; font-family:'Times New Roman'; line-height:1.1em;"> <b>@Model?.Name</b> </p>
+                            <p class="" style="margin-right:10%;"> @Html.Raw(@Model?.ShortDescription)</p>
+                            <br />
+                            <div class="blog-inner">
+                                <div class="blog-img">
+                                      <img src="@Model?.Picture" width="100%" class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-xm-12 col-md-12 col-lg-12 col-xl-12">
+                            <p class="mx-3">@Html.Raw(Model?.Description) </p>
+                        </div>
+                    </div>
+               
+            }
+            
+            <div style="margin-top: 20px;"></div>
+            <hr />
+            
+                <div class="text-left">
+                <h3 class="font-weight-bold" style="font-family:'Times New Roman';"><i class="fa fa-comments icon"></i> Added Comments </h3>
+                @foreach (var comments in Model?.Reviews)
+                    {
+                       <div class="mt-3">
+                       <div class="text-left d-flex">
+                          <span class=" p font-weight-bold">@comments.Customers?.Name</span> &nbsp; &nbsp; &nbsp;
+                          <span class="text-muted">@comments.Date.ToString("M")</span> 
+                       </div>
+                          <p class="p text-muted" style="font-family: 'Times New Roman';">@comments.Message</p> 
+                       </div>
+                    }
+                </div>
+                <hr />
+            
+
+       <div style="margin-top: 30px;"> </div>
+            <div class="col-sm-12 col-xm-12 col-md-10 col-lg-10 col-xl-10">
+                <div class="container">
+                    <h2 class="h5" style="font-family:Times New Roman;"> <b> Write a Review </b> </h2>
+                    <div class="row">
+                        <div class="col-sm-12 col-xm-12 col-md-6 col-lg-6 col-xl-6">
+                            <div class="form-group">
+                                <label for="Name"> Name </label>
+                                <input type="text" id="name" class="form-control" required />
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-xm-12 col-md-6 col-lg-6 col-xl-6">
+                            <div class="form-group">
+                                <label for="Email"> Email </label>
+                                <input type="email" id="email" class="form-control" required />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-xm-12 col-md-12 col-lg-12 col-xl-12">
+                            <div class="form-group">
+                                <label for="Message"> Review </label>
+                                <textarea cols="10" rows="10" class="form-control" id="message"> Write Your Review </textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" onclick="AddReview('@Model?.Id')" class="btn btn-success"> Post Review </button>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-sm-12 col-xm-12 col-md-3 col-lg-3 col-xl-3">
+            <h4 class="text-center font-weight-bold p-3">Categories</h4>
+            <hr />
+            <ul class="info">
+                <li class="navbutton">
+                    <a class="text-dark" asp-controller="Category" asp-action="Category">Health</a>
+                </li>
+                <li class="navbutton">
+                    <a class="text-dark" asp-controller="Category" asp-action="Category">Business</a>
+                </li>
+                <li class="navbutton">
+                    <a class="text-dark" asp-controller="Category" asp-action="Category">Lifestyle</a>
+                </li>
+                <li class="navbutton">
+                    <a class="text-dark" asp-controller="Category" asp-action="Category">Sports</a>
+                </li>
+                <li class="navbutton">
+                    <a class="text-dark" asp-controller="Category" asp-action="Category">Culture</a>
+                </li>
+                <li class="navbutton">
+                    <a class="text-dark" asp-controller="Category" asp-action="Category">Food</a>
+                </li>
+                <li class="navbutton">
+                    <a class="text-dark" asp-controller="Category" asp-action="Category">Trending Clothes</a>
+                </li>
+                <li class="navbutton">
+                    <a class="text-dark" asp-controller="Category" asp-action="Category">Entertainment</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<div style="margin-top: 100px;"></div>
+

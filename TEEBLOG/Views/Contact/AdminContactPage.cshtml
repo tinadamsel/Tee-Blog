@@ -1,0 +1,72 @@
+﻿@model IEnumerable<Core.ViewModels.SupportViewModel>
+
+@{
+    ViewData["Title"] = "AdminContactPage";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml"; 
+}
+
+<div style="margin-top: 100px;"></div>
+<div class="container-fluid" id="master">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-xm-12 col-md-12 col-lg-12 col-xl-12">
+                <h4 class="font-weight-bold mx-3" style="color: #012970;">Contat Page</h4>
+                <ul class="breadcrumb bg-transparent justify-content-start font-weight-bold" style="color:#899bbd;">
+                    <li class="breadcrumb-item">Home</li>
+                    <li class="breadcrumb-item active" style="color: #51678f;">Contact</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <br />
+
+    <div class="container table-responsive" style="margin-left:15px; ">
+         
+            @if (Model.Count() > 0)
+            {
+                <table class="display table table-borderless" id="table-show" width="100%" style="color:#51678f;">
+                    <thead>
+                        <tr>
+                            <th> CustomerId</th>
+                            <th> Name</th>
+                            <th> Email</th>
+                            <th> Subject</th>
+                            <th> Message </th>
+                            <th> Date Created </th>
+                            <th> </th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (var support in Model)
+                        {
+                            <tr>
+                                <td width="5%"> @support.CustomerId</td>
+                                <td width="5%"> @support.Name</td>
+                                <td width="10%">@support.Email</td>
+                                <td width="10%">@support.Subject </td>
+                                <td width="35%">@support.Message </td>
+                                <td width="5%"> @support.Date.ToString("M") </td>
+                                <td width="30%">
+                                    <div class="w-50 btn-group">
+                                    <a asp-controller="Contact" asp-action="Delete" asp-route-id="@support.CustomerId" class="btn btn-outline-secondary mx-2" style="border-radius: 8px;"><i class="fa fa-trash"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <p> No Messages </p>
+            }
+
+        
+    </>
+
+</div>
+
+
+
+

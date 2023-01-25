@@ -1,4 +1,5 @@
 ﻿using Core.Models;
+using Core.ViewModels;
 using Logic.IHelper;
 using Logic.Services;
 using System;
@@ -12,10 +13,13 @@ namespace Logic.Helper
     public class EmailHelper : IEmailHelper
     {
         private readonly IEmailService emailService;
-        public EmailHelper(IEmailService emailService)
+        private readonly IEmailConfiguration _emailConfiguration;
+
+        public EmailHelper(IEmailService emailService, IEmailConfiguration emailConfiguration)
         {
             //_emailService = emailService;
             this.emailService = emailService;
+           _emailConfiguration = emailConfiguration;
         }
 
         public bool SendVerificationEmail(ApplicationUser user, string linkToClick)
@@ -23,7 +27,7 @@ namespace Logic.Helper
             if (user != null && linkToClick != null)
             {
                 string toEmail = user.Email;
-                string subject = "Tee Blog";
+                string subject = "Tee Blog"; 
 
                 var message = "Dear " + user.FirstName + "," + "</br> " +
                  "This is to notify you, that you have been registered successfully with Tee Blog." + "<br/>" +
@@ -38,12 +42,32 @@ namespace Logic.Helper
                 {
                     return true;
                 }
+            }
+            return false;
+        }
+
+        public bool SendAdminEmail(SupportViewModel customer)
+        {
+            if (customer != null)
+            {
+                string toEmail = _emailConfiguration.AdminEmail;
+                string subject = "Contact Message";
+
+                var message = "Dear Admin" + "," + "</br>" +
+                 "This is to notify you, that you have a message from Tee Blog." 
+                 + "</br> " +
+                 "Tee Group.";
+
+                var isSent = emailService.SendEmail(toEmail, subject, message);
+                if (isSent)
+                {
+                    return true;
+                }
 
 
             }
             return false;
         }
-
 
     }
 }

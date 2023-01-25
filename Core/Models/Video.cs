@@ -9,5 +9,6 @@ namespace Core.Models
 	public class Video : Base
 	{
 		public string? Link { get; set; }
-	}
+        //public string? ShortDescription { get; set; }
+    }
 }

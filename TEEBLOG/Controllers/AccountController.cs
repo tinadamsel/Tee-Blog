@@ -15,6 +15,7 @@ namespace TEEBLOG.Controllers
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly IEmailHelper emailHelper;
         private readonly IEmailConfiguration emailConfiguration;
+        
 
         public AccountController(IUserHelper userHelper, SignInManager<ApplicationUser> signInManager,
             UserManager<ApplicationUser> userManager, IEmailHelper emailHelper, IEmailConfiguration emailConfiguration)
@@ -24,6 +25,8 @@ namespace TEEBLOG.Controllers
             _userManager = userManager;
             this.emailHelper = emailHelper;
             this.emailConfiguration = emailConfiguration;
+            
+
         }
 
         [HttpGet]
@@ -67,7 +70,7 @@ namespace TEEBLOG.Controllers
 
         [HttpGet]
         public IActionResult Login()
-        {
+        { 
             return View();
         }
 
@@ -91,10 +94,15 @@ namespace TEEBLOG.Controllers
                                 var role = _userManager.GetRolesAsync(user).Result;
                                 if (role.Count > 0)
                                 {
+                                    if (role.FirstOrDefault().Contains("SuperAdmin"))
+                                    {
+                                        return Json(new { isError = false, url = "/SuperAdmin/SuperAdminBlogPage" });
+                                    }
                                     if (role.FirstOrDefault().Contains("Admin"))
                                     {
                                         return Json(new { isError = false, url = "/Admin/Dashboard" });
                                     }
+
                                     return Json(new { isError = false, url = "/Base/Index" });
                                 }
                             }
@@ -124,11 +132,12 @@ namespace TEEBLOG.Controllers
 
         }
 
-        [HttpPost]
+  
+
+        //[HttpPost]
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
-            HttpContext.Session.Clear();
             return RedirectToAction("Login");
         }
     }

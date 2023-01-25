@@ -1,0 +1,61 @@
+﻿@model Core.Models.Blog
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div style="margin-top: 100px;"></div>
+<div class="container-fluid" id="master">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-xm-12 col-md-12 col-lg-12 col-xl-12">
+                <h4 class="font-weight-bold mx-3" style="color: #012970;">Edit BlogPost</h4>
+                <ul class="breadcrumb bg-transparent justify-content-start font-weight-bold" style="color:#899bbd;">
+                    <li class="breadcrumb-item">Blog Post</li>
+                    <li class="breadcrumb-item active" style="color: #51678f;">Edit BlogPost</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-xm-12 col-md-8 col-lg-8 col-xl-8 m-auto">
+                <div class="card p-4 bg-white rounded">
+                    <h3 class="h5 font-weight-bold mt-3 text-center" style="color: #012970;"> Edit BlogPost </h3> <br />
+                    <form method="POST" enctype="multipart/form-data">
+                        <input asp-for="Id" hidden />
+                        <div class="form-group">
+                            <label asp-for="Name">Name</label>
+                            <input type="text" asp-for="Name" class="form-control" required />
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="CategoryId"> Category </label>
+                            <select class="custom-select" asp-for="CategoryId" required asp-items="@(new SelectList(@ViewBag?.Categories,  "Id", "Name" ))"></select>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="ShortDescription"> Short Description </label>
+                            <textarea id="summernote2" asp-for="ShortDescription" class="form-control" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Description"> Description </label>
+                            <textarea id="summernote" asp-for="Description" class=" form-control" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Image"> Picture</label> 
+                            <input type="file" asp-for="Image" id="picture" class="form-control" required>
+                        </div>
+                        <div class="text-center justify-content-center">
+                            <button type="submit" class="btn btn-primary w-25 p-2"> Update Post</button>
+                            &nbsp;
+                            <a class="btn btn-primary w-25 p-2" asp-controller="Blog" asp-action="AdminBlogPage"> Back</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

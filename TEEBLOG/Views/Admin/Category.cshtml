@@ -5,74 +5,42 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<aside class="sidebar">
-    <ul class="sidebar-nav mt-3">
-        <li class="nav-item">
-            <a class="nav-link text-white" asp-controller="Admin" asp-action="Dashboard"> <i class="fa fa-user"></i>&nbsp; Dashboard </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-white" asp-controller="Admin" asp-action="Category"> <i class="fa fa-book"></i>&nbsp; Category </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-white" asp-controller="Admin" asp-action="BlogPost"> <i class="fa fa-user"></i>&nbsp; BlogPost </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-white" asp-controller="Admin" asp-action="Videos"> <i class="fa fa-user"></i>&nbsp; Videos </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-white" asp-controller="Admin" asp-action="Music"> <i class="fa fa-music"></i>&nbsp; Music </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-white" asp-controller="Admin" asp-action="Profile"> <i class="fa fa-user"></i>&nbsp; Profile </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-white" asp-controller="Admin" asp-action="FAQs"> <i class="fa fa-question-circle"></i>&nbsp; FAQs </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-white" asp-controller="Account" asp-action="Login"> <i class="fa fa-sign-out"></i>&nbsp; Logout </a>
-        </li>
-    </ul>
-</aside>
-<div style="margin-top: 100px;"></div>
+<div style="margin-top: 130px;"></div>
 <div class="container-fluid" id="master">
     <div class="container">
         <div class="row">
-            <div class="col-sm-12 col-xm-12 col-md-12 col-lg-12 col-xl-12">
-                <ul class="breadcrumb bg-dark justify-content-start">
-                    <li class="breadcrumb-item">
-                        <a class="text-white" asp-controller="Admin" asp-action="Dashboard">Dashboard</a>
-                    </li>
-                    <li class="breadcrumb-item active">
-                        <a class="text-white" asp-controller="Admin" asp-action="Category">Category</a>
-                    </li>
+             <div class="col-6 float-left mt-2">
+                <h4 class="font-weight-bold mx-3" style="color: #012970;">Category</h4>
+                <ul class="breadcrumb bg-transparent justify-content-start font-weight-bold mx-1" style="color:#899bbd;">
+                    <li class="breadcrumb-item">Home</li>
+                    <li class="breadcrumb-item active" style="color: #51678f;">Category</li>
                 </ul>
             </div>
-        </div>
-
-        <div class="row">
-            <div class="col-6 text-right">
-                
-            </div>
-            <div class="col-6 text-right"> 
-                <button class="btn btn-success p-2 float-right">
-                    <a asp-controller="Admin" asp-action="AddCategory" class="text-white" style="text-decoration: none;"> <i class="fa fa-plus"></i>&nbsp; Add Category </a>
-                </button>
+            <div class="col-6 float-right">
+                <div class="card p-2 bg-white">
+                    <p class="p-3 text-center" style="color: #012970;">
+                        <a asp-controller="Admin" asp-action="AddCategory" class="font-weight-bold" style="text-decoration: none; color: #012970;"> <i class="fa fa-plus"></i>&nbsp; Add Category </a>
+                    </p>
+                </div>
             </div>
         </div>
     </div>
-    <br /> <br />
+    <br />
    
     <div class="container">
+        <div class="card p-4 bg-white rounded"> 
     @if (Model.Count() > 0)
-        { 
-          <table class="table table-bordered table-striped rounded" width="100%">
-                 <thead>
-                    <th> Name</th>
-                    <th> Active</th>
-                    <th> Deleted </th>
-                    <th> Date Created </th>
-                    <th> </th>
-                 </thead>
+        {
+                <table class="display table table-borderless" id="table-show" width="100%" style="color:#51678f;">
+                <thead>
+                    <tr> 
+                        <th> Name</th>
+                        <th> Active</th>
+                        <th> Deleted </th>
+                        <th> Date Created </th>
+                        <th> </th>
+                    </tr>
+                </thead>
 
                  <tbody>
                      @foreach (var category in Model)
@@ -81,11 +49,11 @@
                              <td width="20%">@category.Name</td>
                              <td width="20%">@category.Active </td>
                              <td width="20%">@category.Deleted </td>
-                             <td width="20%">@category.DateCreated </td>
+                             <td width="20%">@category.DateCreated.ToString("M") </td>
                              <td width="20%"> 
-                                 <div class="w-75 btn-group">
-                                    <a asp-controller="Admin" asp-route-id="@category.Id" asp-action="Edit" class="btn btn-outline-success mx-2" style="border-radius: 8px;"> Edit</a>
-                                    <a asp-controller="Admin" asp-route-id="@category.Id" asp-action="Delete" class="btn btn-outline-success mx-2" style="border-radius: 8px;"> Delete</a>
+                                 <div class="w-50 btn-group">
+                                    <a asp-controller="Admin" asp-route-id="@category.Id" asp-action="Edit" class="btn btn-outline-secondary  mx-2" style="border-radius: 8px;"><i class="fa fa-edit"></i></a>
+                                    <a asp-controller="Admin" asp-route-id="@category.Id" asp-action="Delete" class="btn btn-outline-secondary mx-2" style="border-radius: 8px;"><i class="fa fa-trash"></i></a>
                                  </div>
                              </td>
                             </tr>   
@@ -98,6 +66,7 @@
             <p> No Category added </p>
         }
      
+        </div>
     </div>
 
 </div>

@@ -1,0 +1,75 @@
+﻿@model IEnumerable<Core.ViewModels.ReviewViewModel>
+
+@{
+    ViewData["Title"] = "AdminReviews";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div style="margin-top: 100px;"></div>
+<div class="container-fluid" id="master">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-xm-12 col-md-12 col-lg-12 col-xl-12">
+                <h4 class="font-weight-bold mx-3" style="color: #012970;">Reviews Page</h4>
+                <ul class="breadcrumb bg-transparent justify-content-start font-weight-bold" style="color:#899bbd;">
+                    <li class="breadcrumb-item">Home</li>
+                    <li class="breadcrumb-item active" style="color: #51678f;">Reviews</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <br />
+
+    <div class="p-3 text-center">
+        <span class="text-center text-success font-weight-bold" style="font-family: 'Times New Roman';"> @TempData["Message"]</span>
+    </div>
+
+    <div class="container">
+            @if (Model.Count() > 0)
+            {
+                    <table class="display" id="table-show" width="100%" style="color:#51678f;">
+                        <thead>
+                            <tr>
+                                <th> CustomerId</th>
+                                <th> BlogId</th>
+                                <th> Name</th>
+                                <th> Email</th>
+                                <th> Message </th>
+                                <th> Date Created</th>
+                                <th> </th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                        @foreach (var review in Model)
+                        {
+                               <tr>
+                                   <td width="5%"> @review.CustomerId</td>
+                                   <td width="5%"> @review.BlogId</td>
+                                   <td width="5%"> @review.Name</td>
+                                   <td width="10%">@review.Email</td>
+                                   <td width="30%">@review.Message </td>
+                                   <td width="5%"> @review.Date.ToString("M") </td>
+                                   <td width="40%">
+                                       <div class="w-50 btn-group">
+                                    <a asp-controller="Reviews" asp-action="Accept" asp-route-id="@review.Id" class="btn btn-outline-secondary mx-1" style="border-radius: 5px;font-family:'Times New Roman';">Accept</a>
+                                    <a asp-controller="Reviews" asp-action="Decline" asp-route-id="@review.Id" class="btn btn-outline-secondary mx-1" style="border-radius: 5px;font-family:'Times New Roman';">Reject</a>
+                                    <a asp-controller="Reviews" asp-action="Delete" asp-route-id="@review.BlogId" class="btn btn-outline-secondary mx-1" style="border-radius: 8px;"><i class="fa fa-trash"></i></a>
+                                       </div>
+                                   </td>
+                               </tr>
+                        }
+                        </tbody>
+                    </table>
+            }
+            else
+            {
+                    <p> No Comments Yet </p>
+            }
+    </div>
+
+</div>
+
+
+
+
