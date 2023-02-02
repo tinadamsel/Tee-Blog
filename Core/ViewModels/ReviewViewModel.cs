@@ -21,5 +21,8 @@ namespace Core.ViewModels
 		public virtual Customer? Customers { get; set; }
 		public string? Message { get; set; }
 		public DateTime Date { get; set; }
-	}
+        public string Error { get; set; }
+
+        public string Success { get; set; }
+    }
 }

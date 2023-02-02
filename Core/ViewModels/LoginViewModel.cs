@@ -9,7 +9,6 @@ namespace Core.ViewModels
 {
 	public class LoginViewModel
 	{
-		[Required(ErrorMessage = "Email is required.")]
 		public string? Email { get; set; } 
 
 		[Required]

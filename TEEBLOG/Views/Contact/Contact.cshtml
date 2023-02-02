@@ -1,4 +1,4 @@
-﻿@model Core.Models.Support
+﻿@model Core.ViewModels.SupportViewModel
 @{
     ViewData["Title"] = "Contact";
 }
@@ -53,44 +53,52 @@
               </div>
         </div> 
 
+       
+
         <div class="col-sm-12 col-xm-12 col-md-6 col-lg-6 col-xl-6 mt-3">
             <div class="card bg-light p-3">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-12 col-xm-12 col-md-6 col-lg-6 col-xl-6">
-                            <div class="form-group">
-                                <label for="Name"> Name </label>
-                                <input type="text" id="name" class="form-control" required />
+               @* @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()*@
+                    <div class="container">
+                        <div class="row">
+@*                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })*@
+                            <div class="col-sm-12 col-xm-12 col-md-6 col-lg-6 col-xl-6">
+                                <div class="form-group">
+                                    <label for="Name"> Name </label>
+                                    <input type="text" id="name" required class="form-control" />
+                                   @* @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })*@
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-sm-12 col-xm-12 col-md-6 col-lg-6 col-xl-6">
-                            <div class="form-group">
-                                <label for="Email"> Email </label>
-                                <input type="email" id="email" class="form-control" required />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12 col-xm-12 col-md-12 col-lg-12 col-xl-12">
-                            <div class="form-group">
-                                <label for="Subject"> Subject </label>
-                                <input type="text" id="subject" class="form-control" required />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12 col-xm-12 col-md-12 col-lg-12 col-xl-12">
-                            <div class="form-group">
-                                <label for="Message"> Message </label>
-                                <textarea cols="5" rows="5" class="form-control" id="message" placeholder="Message"> </textarea>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="text-center">
-                        <button type="submit" onclick="AddSupport()" class="btn btn-success"> Send Message </button>
-                    </div>
-                </div>
+                            <div class="col-sm-12 col-xm-12 col-md-6 col-lg-6 col-xl-6">
+                                <div class="form-group">
+                                    <label for="Email"> Email </label>
+                                    <input type="email" id="email" required class="form-control" />
 
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-xm-12 col-md-12 col-lg-12 col-xl-12">
+                                <div class="form-group">
+                                    <label for="Subject"> Subject </label>
+                                    <input type="text" id="subject" required class="form-control" />
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-xm-12 col-md-12 col-lg-12 col-xl-12">
+                                <div class="form-group">
+                                    <label for="Message"> Message </label>
+                                    <textarea cols="5" rows="5" class="form-control" required id="message" placeholder="Message"> </textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" onclick="AddSupport()" class="btn btn-success"> Send Message </button>
+                        </div>
+                    </div>
             </div>
         </div>
     </div>

@@ -11,7 +11,7 @@ namespace Core.Models
 	{
 		public string? FirstName { get; set; }
 		public string? LastName { get; set; }
-		public bool ComfirmPassword { get; set; }
+		public string ComfirmPassword { get; set; }
 		public bool IsDeactivated { get; set; }
 		public DateTime DateRegistered { get; set; }
 		

@@ -41,9 +41,13 @@ namespace TEEBLOG.Controllers
             if (allDetail != null)//conditional statement for checks
             {
                 var person = JsonConvert.DeserializeObject<RegisterViewModel>(allDetail);
-
+               
                 if (person != null)
                 {
+                    //if (person.ComfirmPassword != person.Password)
+                    //{
+                    //    return Json(new { isError = true, message = "Password match" });
+                    //}
                     var result = await _userHelper.CreateUser(person);
 
                     if (result)
@@ -59,7 +63,6 @@ namespace TEEBLOG.Controllers
 
                             return Json(new { isError = false, message = "Registration successful. Login to your email to verify account.", url = "/Account/login" });
                         }
-                        else
                             return Json(new { isError = true, message = "Your Registration was not successful" });
                     }
                     return Json(new { isError = true, message = "Your Registration was not successful" });
@@ -82,7 +85,7 @@ namespace TEEBLOG.Controllers
                 var data = JsonConvert.DeserializeObject<LoginViewModel>(detail);
 
                 if (data != null)
-                {
+                { 
                     var user = _userHelper.FindUserByEmail(data.Email);
                     if (user != null)
                     {
@@ -96,27 +99,25 @@ namespace TEEBLOG.Controllers
                                 {
                                     if (role.FirstOrDefault().Contains("SuperAdmin"))
                                     {
-                                        return Json(new { isError = false, url = "/SuperAdmin/SuperAdminBlogPage" });
+                                        return Json(new { isError = false, message = "Login successful", url = "/SuperAdmin/SuperAdminBlogPage" });
                                     }
                                     if (role.FirstOrDefault().Contains("Admin"))
                                     {
-                                        return Json(new { isError = false, url = "/Admin/Dashboard" });
+                                        return Json(new { isError = false, message = "Login successful", url = "/Admin/Dashboard" });
                                     }
 
                                     return Json(new { isError = false, url = "/Base/Index" });
                                 }
                             }
                         }
-                        return Json(new { isError = true, message = "Please proceed to your email to verify your account." });
+                        return Json(new { isError = true, message = "Incorrect Email or Password"});
                     }
-                    return Json(new { isError = true, message = "Email or password is incorrect" });
+                    return Json(new { isError = true, message = "Email or password is incorrect"});
                 }
-
+                return Json(new { isError = true, message = "Email or password is incorrect" });
             }
 
             return Json(new { isError = true, message = "Please kindly register to continue" });
-
-            //return Json(new { isError = true, msg = "Please fill the form correctly"});
         }
 
         [HttpGet]

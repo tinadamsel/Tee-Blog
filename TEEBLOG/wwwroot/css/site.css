@@ -34,7 +34,7 @@ html {
 }
 
 body {
-    margin-bottom: 60px;
+    margin-bottom: 0px;
     overflow-x: hidden;
 }
 
@@ -268,4 +268,13 @@ a { text-decoration: none;
     background-attachment: fixed;
     text-align:left;
 
+}
+
+.error {
+    font-size: 14.5px;
+    margin-top: 5px;
+}
+
+.error {
+    color: red;
 }

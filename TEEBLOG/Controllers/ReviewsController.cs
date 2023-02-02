@@ -122,7 +122,7 @@ namespace TEEBLOG.Controllers
                     review.isApproved = true;
                     _context.Reviews.Update(review);
                     _context.SaveChanges();
-                    
+
                     TempData["Message"] = "Review Approved";
                 }
             }
@@ -138,8 +138,7 @@ namespace TEEBLOG.Controllers
                 {
                     review.isApproved = false;
                     _context.Reviews.Update(review);
-                    _context.SaveChanges();
-
+                    _context.SaveChanges(); 
                     TempData["Message"] = "Review Declined";
                 }
             }

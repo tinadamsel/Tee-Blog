@@ -18,14 +18,21 @@
         </div>
     </div>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12 col-xm-12 col-md-8 col-lg-8 col-xl-8 m-auto">
-                 <div class="card p-4 bg-white rounded">
-                    <h3 class="h5 font-weight-bold mt-3 text-center" style="color: #012970;"> Add BlogPost </h3> <br />
+   
+    @using (Html.BeginForm())   
+    {  
+    @Html.AntiForgeryToken()
+    
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-xm-12 col-md-8 col-lg-8 col-xl-8 m-auto">
+                    <div class="card p-4 bg-white rounded">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <h3 class="h5 font-weight-bold mt-3 text-center" style="color: #012970;"> Add BlogPost </h3> <br />
                         <div class="form-group">
                             <label for="Name">Name</label>
-                            <input type="text" id="name" class="form-control" required/>
+                            <input type="text" id="name" required class="form-control" />
+                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
                         </div>
                         <div class="form-group">
                             <label for="Category"> Category </label>
@@ -33,26 +40,27 @@
                         </div>
                         <div class="form-group">
                             <label for="ShortDescription"> Short Description </label>
-                        <textarea id="summernote2" class="form-control"></textarea>
+                            <textarea id="summernote2" required class="form-control"></textarea>
                         </div>
                         <div class="form-group">
                             <label for="Description"> Description </label>
-                            <textarea id="summernote" class=" form-control"></textarea>
+                            <textarea id="summernote" required class=" form-control"></textarea>
                         </div>
                         <div class="form-group">
                             <label for="Picture"> Picture</label>
-                            <input type="file" id="picture" class="form-control" required>
-                        </div> 
+                            <input type="file" id="picture" required class="form-control">
+                        </div>
                         <div class="text-center justify-content-center">
-                        <button type="submit" onclick="addblog()" class="btn btn-primary w-25 p-2"> Add Post</button>
+                            <button type="submit" onclick="addblog()" class="btn btn-primary w-25 p-2"> Add Post</button>
                             &nbsp;
                             <a class="btn btn-primary w-25 p-2" asp-controller="Blog" asp-action="AdminBlogpage"> Back</a>
                         </div>
 
-                   </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
+    }
 </div>
 
 
