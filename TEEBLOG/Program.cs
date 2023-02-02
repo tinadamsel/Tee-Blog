@@ -16,6 +16,7 @@ builder.Services.AddScoped<IAdminHelper, AdminHelper>();
 builder.Services.AddScoped<IEmailService, EmailService>();
 builder.Services.AddScoped<IEmailHelper, EmailHelper>();
 builder.Services.AddScoped<IDropdownHelper, DropdownHelper>();
+builder.Services.AddScoped<IEmailConfiguration, EmailConfiguration>();
 
 
 

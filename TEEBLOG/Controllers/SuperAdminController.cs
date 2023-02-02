@@ -59,7 +59,7 @@ namespace TEEBLOG.Controllers
                     blog.BlogStatus = blogEnum.Approve;
                     _context.Blogs.Update(blog);
                     _context.SaveChanges();
-                    blog.Approved = "Blog Post Approved";
+                    //blog.Approved = "Blog Post Approved";
                 }
                 TempData["Message"] = "Blog Post Approved";
             }
@@ -76,7 +76,7 @@ namespace TEEBLOG.Controllers
                     blog.BlogStatus = blogEnum.Decline;
                     _context.Blogs.Remove(blog);
                     _context.SaveChanges();
-                    blog.Rejected = "Blog Post Rejected";
+                    //blog.Rejected = "Blog Post Rejected";
                 }
                 TempData["Message"] = "Blog Post Declined";
             }

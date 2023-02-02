@@ -19,8 +19,6 @@ namespace TEEBLOG.Controllers
         }
         public IActionResult Index() 
         
-        
-        
         {
             var blogs = new List<Blog>();
             blogs = _context.Blogs.Where(x => x.Active && !x.Deleted).Include(c => c.Categories).ToList();

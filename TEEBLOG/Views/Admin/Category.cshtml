@@ -27,16 +27,15 @@
     </div>
     <br />
    
-    <div class="container">
-        <div class="card p-4 bg-white rounded"> 
+    <div class="container"> 
     @if (Model.Count() > 0)
         {
-                <table class="display table table-borderless" id="table-show" width="100%" style="color:#51678f;">
+                <table class="display table table-borderless" id="tableShow" width="100%" style="color:#51678f;">
                 <thead>
                     <tr> 
                         <th> Name</th>
-                        <th> Active</th>
-                        <th> Deleted </th>
+                        @*<th> Active</th>
+                        <th> Deleted </th>*@
                         <th> Date Created </th>
                         <th> </th>
                     </tr>
@@ -47,8 +46,8 @@
                         {
                          <tr>
                              <td width="20%">@category.Name</td>
-                             <td width="20%">@category.Active </td>
-                             <td width="20%">@category.Deleted </td>
+@*                             <td width="20%">@category.Active </td>
+                             <td width="20%">@category.Deleted </td>*@
                              <td width="20%">@category.DateCreated.ToString("M") </td>
                              <td width="20%"> 
                                  <div class="w-50 btn-group">
@@ -65,8 +64,6 @@
         {
             <p> No Category added </p>
         }
-     
-        </div>
     </div>
 
 </div>

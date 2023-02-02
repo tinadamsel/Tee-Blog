@@ -36,6 +36,7 @@ namespace TEEBLOG.Controllers
             {
                 result = mainSupport.Select(x => new SupportViewModel() 
                 {
+                    Id = x.Id,
                     Message = x.Message,
                     Subject = x.Subject,
                     CustomerId = x.CustomerId,
@@ -73,7 +74,7 @@ namespace TEEBLOG.Controllers
                     {
                         var sendEmail = emailHelper.SendAdminEmail(data);
 
-                        return Json(new { isError = false, message = "Your Message was successfully sent. Thank you for reaching out.", url = "/Base/Index" });
+                        return Json(new { isError = false, message = "Your Message was successfully sent. Thank you for reaching out.", url = "/Contact/Contact"});
                     }
                     return Json(new { isError = true, message = "Your Message was not sent.", url = "/Contact/Contact" });
                 }
@@ -104,7 +105,7 @@ namespace TEEBLOG.Controllers
                 };
                 return View(result);
             }
-            return RedirectToAction("Contact", "AdminContactPage");
+            return RedirectToAction("Contact", "Contact");
         }
 
         [HttpPost]
@@ -120,7 +121,26 @@ namespace TEEBLOG.Controllers
             return View(support);
         }
 
+        public JsonResult GetMessage(int? id)
+        {
+            try
+            {
+                if (id > 0)
+                {
+                    var msg = _context.Supports.Where(x => x.CustomerId == id).FirstOrDefault();
+                    if (msg != null)
+                    {
+                        return Json(new { isError = false, data = msg });
+                    }
+                }
+                return Json(new { isError = true, message = "No Message found!" });
+            }
+            catch (Exception)
+            {
 
+                throw;
+            }
+        }
 
     }
 }

@@ -6,7 +6,7 @@
 }
 
 <div style="margin-top: 100px;"></div>
-<div class="container-fluid" id="master">
+<div class="container-fluid" id="master"> 
     <div class="container">
         <div class="row">
             <div class="col-6 float-left mt-2">
@@ -25,14 +25,13 @@
             </div>
         </div>
     </div>
-
+  
     <br /> <br />
 
     <div class="container table-responsive">
-        <div class="card p-4 bg-white rounded">
             @if (Model.Count() > 0)
             {
-                <table class="display table table-borderless" id="table-show" width="100%">
+            <table class="display table table-borderless" id="tableShow" width="100%">
                 <thead>
                     <tr>
                         <th> Name</th>
@@ -51,18 +50,21 @@
                                                       
                             <tr>
                             <td width="5%">@blog.Name</td>
-                            <td width="5%">@blog.DateCreated.ToString("D") </td>
-                            <td width="5%">@blog.CategoryId </td>
-                            <td width="40%">@Html.Raw(@blog.ShortDescription)</td> 
-                            @*<td style="width:30%;">
-                                <a asp-controller="Blog" asp-action="ShowBlogPage" asp-route-id="@blog.Id" class="font-weight-bold" style="text-decoration: none; color: black;"> Check Blog Post </a>
-                            </td>*@
+                            <td width="20%">@blog.DateCreated.ToString("M") </td>
+                            <td width="">@blog.CategoryId </td>
+                            <td width="35%">
+                                <a class="btn btn-primary" onclick="Description(@blog.Id)" data-toggle="modal" data-target="#myDescription" style="border-radius: 15px; font-family:'Times New Roman';"> View Description </a>
+                            </td>
+                                @* <td width="40%">@Html.Raw(@blog.ShortDescription)</td> *@
+                                @*<td style="width:30%;">
+                                    <a asp-controller="Blog" asp-action="ShowBlogPage" asp-route-id="@blog.Id" class="font-weight-bold" style="text-decoration: none; color: black;"> Check Blog Post </a>
+                                </td>*@
                             <td width="30%"><img src="@blog.Picture" style="width: 50px; height: 50px;"/></td>
                             <td width="10%">
                                 <div class="w-75 btn-group">
-                                   <a asp-controller="Blog" asp-route-id="@blog.Id" asp-action="Edit" class="btn btn-outline-secondary  mx-1" style="border-radius: 5px;"><i class="fa fa-edit"></i></a>
-                                   <a asp-controller="Blog" asp-route-id="@blog.Id" asp-action="Delete" class="btn btn-outline-secondary  mx-1" style="border-radius: 5px;"><i class="fa fa-trash"></i></a>
-                                   <a asp-controller="Blog" asp-action="ShowBlogPage" asp-route-id="@blog.Id" class="btn btn-outline-secondary mx-1" style="border-radius: 5px; font-family:'Times New Roman';"> Post </a>
+                                   <a asp-controller="Blog" asp-route-id="@blog.Id" asp-action="Edit" class="btn btn-outline-primary  mx-1" style="border-radius: 5px;"><i class="fa fa-edit"></i></a>
+                                   <a asp-controller="Blog" asp-route-id="@blog.Id" asp-action="Delete" class="btn btn-outline-danger  mx-1" style="border-radius: 5px;"><i class="fa fa-trash"></i></a>
+                                   <a asp-controller="Blog" asp-action="ShowBlogPage" asp-route-id="@blog.Id" class="btn btn-outline-primary mx-1" style="border-radius: 5px; font-family:'Times New Roman';"> View </a>
                                 </div>
                             </td>
                         </tr>
@@ -74,10 +76,40 @@
         {
             <p> No Blog Post added </p>
         }
-        </div>
+      
     </div>
 
 </div>
+
+
+<!-- Description Modal -->
+
+
+<div aria-hidden="true" role="dialog" tabindex="-1" id="myDescription" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h4 class="modal-title">Short Description</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            
+                <div class="modal-body">
+                    <input id="descid" hidden>
+                    <textarea cols="20" rows="10" id="desc" class="form-control"> 
+                        
+                    </textarea>
+
+                </div>
+            
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button> 
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- Description Modal End -->
 
 
 

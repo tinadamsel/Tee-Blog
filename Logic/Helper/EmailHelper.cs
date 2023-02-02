@@ -51,20 +51,22 @@ namespace Logic.Helper
             if (customer != null)
             {
                 string toEmail = _emailConfiguration.AdminEmail;
-                string subject = "Contact Message";
+                string subject = "Message From Tee Blog Contact.";
 
-                var message = "Dear Admin" + "," + "</br>" +
-                 "This is to notify you, that you have a message from Tee Blog." 
-                 + "</br> " +
-                 "Tee Group.";
+                var message = "Hello Admin" + "," + " Message from a user:" +
+                    "</br> <br/> " + "Name: " + customer.Name + "," + "</br> " +
+                    "</br> " + "Subject: " + customer.Subject + "," + "</br> " +
+                    "</br> " + "Email Address: " + customer.Email + "," + "</br> " +
+                    "</br> " + "Message: " + customer.Message + "</br> " +
+                    "</br> " +
+
+                  "Tee Group.";
 
                 var isSent = emailService.SendEmail(toEmail, subject, message);
                 if (isSent)
                 {
                     return true;
                 }
-
-
             }
             return false;
         }

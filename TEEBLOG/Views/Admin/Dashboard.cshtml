@@ -1,4 +1,4 @@
-﻿
+﻿@model Core.ViewModels.DashboardViewModel
 @{
     ViewData["Title"] = "Dashboard";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -19,56 +19,66 @@
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-sm-12 col-xm-12 col-md-6 col-lg-6 col-xl-6 mt-2">
-            <div class="card p-2 bg-white">
-                <div class="card-body" style=" color: #012970;">
-                    <h5 class="card-title text-center mt-1" > Category</h5>
-                    <div class="rounded-circle">
-                        <p class="text-muted float-left">Added Categories</p>
-                        <button class="font-weight-bold h6 float-right justify-content-end" style="color: ghostwhite; background-color: #012970; border-radius: 30px; outline:none ;" > </button>
+    @if (Model != null)
+    {
+        <div class="row">
+            <div class="col-sm-12 col-xm-12 col-md-6 col-lg-6 col-xl-6 mt-2">
+               <a asp-controller="Admin" asp-action="Category" class="text-decoration-none">
+                    <div class="card p-2 bg-white"> 
+                        <div class="card-body" style=" color: #012970;">
+                            <h5 class="card-title text-center mt-1 font-weight-bold"> Category</h5>
+                            <div class="rounded-circle">
+                                <p class="text-muted float-left">Added Categories</p>
+                                <p class="font-weight-bold float-right justify-content-end" style="color:#012970; font-size:30px;">@Model.TotalCategories</p>
+                            </div>
+                        </div>
                     </div>
-                </div>
+               </a>
             </div>
-        </div>
 
-        <div class="col-sm-12 col-xm-12 col-md-6 col-lg-6 col-xl-6 mt-2">
-            <div class="card p-2 bg-white">
-                <div class="card-body" style=" color: #012970;">
-                    <h5 class="card-title text-center mt-1"> Blog Post</h5>
-                    <div class="rounded-circle">
-                        <p class="text-muted float-left">Added Post</p>
-                        <button class="font-weight-bold h6 float-right justify-content-end" style="color: ghostwhite; background-color: #012970; border-radius: 30px; outline:none ;"> </button>
+            <div class="col-sm-12 col-xm-12 col-md-6 col-lg-6 col-xl-6 mt-2">
+                <a asp-controller="Blog" asp-action="AdminBlogPage" class="text-decoration-none">
+                <div class="card p-2 bg-white">
+                    <div class="card-body" style=" color: #012970;">
+                        <h5 class="card-title text-center mt-1 font-weight-bold"> Blog Post</h5>
+                        <div class="rounded-circle">
+                            <p class="text-muted float-left">Added Post</p>
+                            <p class="font-weight-bold float-right justify-content-end" style="color:#012970; font-size:30px;">@Model.Totalblogs </p>
+                        </div>
                     </div>
                 </div>
+                </a>
             </div>
         </div>
-    </div>
-    <br />
-    <div class="row">
-        <div class="col-sm-12 col-xm-12 col-md-6 col-lg-6 col-xl-6 mt-2">
-            <div class="card p-2 bg-white">
-                <div class="card-body" style=" color: #012970;">
-                    <h5 class="card-title text-center mt-1"> Videos</h5>
-                    <div class="rounded-circle">
-                        <p class="text-muted float-left">Added Videos</p>
-                        <button class="font-weight-bold h6 float-right justify-content-end" style="color: ghostwhite; background-color: #012970; border-radius: 30px; outline:none ;"> </button>
+        <br />
+        <div class="row">
+            <div class="col-sm-12 col-xm-12 col-md-6 col-lg-6 col-xl-6 mt-2">
+                <a asp-controller="Contact" asp-action="AdminContactPage" class="text-decoration-none">
+                    <div class="card p-2 bg-white">
+                        <div class="card-body" style=" color: #012970;">
+                            <h5 class="card-title text-center mt-1 font-weight-bold"> Support</h5>
+                            <div class="rounded-circle">
+                                <p class="text-muted float-left">Support Messages</p>
+                                <p class="font-weight-bold float-right justify-content-end" style="color:#012970; font-size:30px;">@Model.TotalSupports </p>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
+            @*<div class="col-sm-12 col-xm-12 col-md-6 col-lg-6 col-xl-6 mt-2">
+        <div class="card p-2 bg-white">
+        <div class="card-body" style=" color: #012970;">
+        <h5 class="card-title text-center mt-1"> Videos</h5>
+        <div class="rounded-circle">
+        <p class="text-muted float-left">Added Videos</p>
+        <button class="font-weight-bold h6 float-right justify-content-end" style="color: ghostwhite; background-color: #012970; border-radius: 30px; outline:none ;"> </button>
         </div>
+        </div>
+        </div>
+        </div>*@
 
-        <div class="col-sm-12 col-xm-12 col-md-6 col-lg-6 col-xl-6 mt-2">
-            <div class="card p-2 bg-white">
-                <div class="card-body" style=" color: #012970;">
-                    <h5 class="card-title text-center mt-1"> Support</h5>
-                    <div class="rounded-circle">
-                        <p class="text-muted float-left">Support Messages</p>
-                        <button class="font-weight-bold h6 float-right justify-content-end" style="color: ghostwhite; background-color: #012970; border-radius: 30px; outline:none ;"> </button>
-                    </div>
-                </div>
-            </div>
         </div>
-    </div>
+    }
+    
 
 </div>

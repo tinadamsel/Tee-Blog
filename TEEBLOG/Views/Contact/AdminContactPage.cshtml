@@ -10,7 +10,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12 col-xm-12 col-md-12 col-lg-12 col-xl-12">
-                <h4 class="font-weight-bold mx-3" style="color: #012970;">Contat Page</h4>
+                <h4 class="font-weight-bold mx-3" style="color: #012970;">Contact Page</h4>
                 <ul class="breadcrumb bg-transparent justify-content-start font-weight-bold" style="color:#899bbd;">
                     <li class="breadcrumb-item">Home</li>
                     <li class="breadcrumb-item active" style="color: #51678f;">Contact</li>
@@ -24,7 +24,7 @@
          
             @if (Model.Count() > 0)
             {
-                <table class="display table table-borderless" id="table-show" width="100%" style="color:#51678f;">
+            <table class="display table table-borderless" id="tableShow" width="100%" style="color:#51678f;">
                     <thead>
                         <tr>
                             <th> CustomerId</th>
@@ -44,9 +44,11 @@
                                 <td width="5%"> @support.CustomerId</td>
                                 <td width="5%"> @support.Name</td>
                                 <td width="10%">@support.Email</td>
-                                <td width="10%">@support.Subject </td>
-                                <td width="35%">@support.Message </td>
-                                <td width="5%"> @support.Date.ToString("M") </td>
+                                <td width="10%">@support.Subject</td>
+                                <td width="30%">
+                                <a class="btn btn-primary" onclick="Message(@support.CustomerId)" data-toggle="modal" data-target="#myMessage" style="border-radius: 15px; font-family:'Times New Roman';"> Message </a>
+                                </td>
+                                <td width="15%"> @support.Date.ToString("M") </td>
                                 <td width="30%">
                                     <div class="w-50 btn-group">
                                     <a asp-controller="Contact" asp-action="Delete" asp-route-id="@support.CustomerId" class="btn btn-outline-secondary mx-2" style="border-radius: 8px;"><i class="fa fa-trash"></i></a>
@@ -68,5 +70,29 @@
 </div>
 
 
+    <!-- Description Modal -->
+    <div aria-hidden="true" role="dialog" tabindex="-1" id="myMessage" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
 
+                <div class="modal-header">
+                    <h4 class="modal-title">Short Description</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
 
+                <div class="modal-body">
+                    <input id="msgid" hidden>
+                    <textarea cols="20" rows="10" id="msg" class="form-control"> 
+
+                    </textarea>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Description Modal End -->

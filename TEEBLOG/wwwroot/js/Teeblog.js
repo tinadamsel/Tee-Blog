@@ -7,7 +7,7 @@ function login() {
     data.Email = $("#email").val();
     data.Password = $("#password").val();
     if (data.Email != "" && data.Password != "") {
-        var details = JSON.stringify(data);
+        let details = JSON.stringify(data);
         $.ajax({
             type: "POST",
             dataType: "Json",
@@ -20,11 +20,13 @@ function login() {
                     newSuccessAlert(result.message, result.url);
                 }
                 else {
-
+                    message = "Email or password is incorrect",
+                        infoAlert(message);
                 }
             },
             error: function () {
-
+                message = "Please proceed to your email to verify your account.",
+                    errorAlert(message);
             }
         });
     }
@@ -39,31 +41,54 @@ function register() {
     person.Email = $("#email").val();
     person.Password = $("#password").val();
     person.ConfirmPassword = $("#confirmPassword").val();
-    if (person.FirstName != "" && person.LastName != "" && person.Email != "" && person.Password != "" && person.ConfirmPassword != "") {
-        var allDetails = JSON.stringify(person);
-        $.ajax({
-            type: "POST",
-            dataType: "Json",
-            url: "/Account/Register",
-            data: { allDetail: allDetails },
-            success: function (result) {
-                debugger;
-                if (!result.isError) {
-                    message = "Registration successful. Login to your email to verify account."
-                    url = "/Account/login"
-                    newSuccessAlert(result.message, result.url);
-                }
-                else {
-                    message = " Check your details before clicking register",
-                        infoAlert(message)
-                }
-            },
-            error: function () {
-                message = "Please fill the form correctly",
-                    errorAlert(message);
-            }
-        })
+
+    if (person.FirstName == "" || person.FirstName == undefined && person.LastName == "" || person.LastName == undefined) {
+        validateForm("firstName", "Lirst name cannnot be empty");
+        validateForm("lastName", "Last name cannnot be empty");
     }
+    //if (person.LastName == "" || person.LastName == undefined) {
+    //    validateForm("lastName", "Last name cannnot be empty");
+    //}
+    if (person.ConfirmPassword !== person.Password) {
+        message = "Password do not match",
+            infoAlert(message);
+    }
+    if (person.FirstName != "" && person.LastName != "" && person.Email != "" && person.Password != "" && person.ConfirmPassword != "")
+    {
+          var allDetails = JSON.stringify(person);
+          $.ajax({
+             type: "POST",
+              dataType: "Json",
+              url: "/Account/Register",
+              data: { allDetail: allDetails },
+              success: function (result) {
+                    debugger;
+                    if (!result.isError) {
+                        message = "Registration successful. Login to your email to verify account.",
+                            url = "/Account/login",
+                            newSuccessAlert(result.message, result.url);
+                    }
+                    else {
+                        message = "Check your details before clicking register",
+                            infoAlert(message);
+                    }
+                },
+              error: function () {
+                 message = "Please fill the form correctly", 
+                    errorAlert(message);
+              }
+          })
+    }
+    //else if (person.ConfirmPassword !== person.Password) {
+    //        message = "Password do not match",
+    //            infoAlert(message);
+    //}
+
+}
+function validateForm(id, message)
+{
+    $("#" + id + "Error").text(message).css({color:"red"});
+    $("#" + id).css({ border:"2px solid red" });
 }
 
 function addblog() {
@@ -95,6 +120,14 @@ function addblog() {
                             url = "/Blog/AdminBlogPage"
                             newSuccessAlert(result.message, result.url);
                         }
+                        else {
+                            message = "Your details are not Complete",
+                                infoAlert(message);
+                        }
+                    },
+                    error: function() {
+                        message = "Incomplete Details",
+                            errorAlert(message);
                     }
 
                 })
@@ -142,7 +175,6 @@ function AddSupport() {
 
 
 function AddReview(id) {
-
     debugger;
     var review = {};
     review.Name = $('#name').val();
@@ -177,17 +209,102 @@ function AddReview(id) {
 }
 
 
+//function EditpayForm(id) {
+//    debugger;
+//    $.ajax({
+//        type: 'GET',
+//        url: '/Admin/GetEditPayment', // we are calling json method
+//        dataType: 'json',
+//        data:
+//        {
+//            id: id
+//        },
+//        success: function (result) {
+//            debugger
+//            if (!result.isError) {
+//                debugger
+//                $("#deleteId").val(result.result.id);
+//                $("#editId").val(result.result.id);
+//                $("#editpatname").val(result.result.PatientName);
+//                $("#editmodofpay").val(result.result.ModeOfPay);
+//                $("#editproof").val(result.result.Proof);
+//                $("#editpayday").val(result.result.PaymentDate);
+//                $("#editpaidamount").val(result.result.PaidAmount);
+//            }
+//        },
+//        error: function (ex) {
+//            "please fill the form correctly" + errorAlert(ex);
+//        }
+//    });
+//};
 
+//function Description(id) {
+//    debugger;
+//    $.ajax({
+//        type: "GET",
+//        url: '/Blog/Description/' + id,
+//        dataType: "jason",
+//        data: { id: id },
+//        success: function (data) {
+//            $('.modal-body').html(data);
+//            $("#myDescription").modal("show");
 
+//        }
 
+//    })
 
+//}
 
+function Description(id) {
+    debugger;
+    $.ajax({
+        type: "GET",
+        url: '/Blog/GetDescription', // we are calling json method
+        dataType: 'json',
+        data:
+        {
+            id: id
+        },
+        success: function (result) {
+            debugger
+            if (!result.isError) {
+                $("#descid").val(result.data.id);
+                var ddd = $('#desc').html($.parseHTML(decodeURI(result.data.description)));
+               //var ee = $("#desc").summernote(result.data.description);
+                $('.modal-body').text(data);
+                
+            }
+        },
+        error: function (ex) {
+            "No Description Found" + errorAlert(ex);
+        }
+    });
+};
 
+function Message(id) {
+    debugger;
+    $.ajax({
+        type: "GET",
+        url: '/Contact/GetMessage', // we are calling json method
+        dataType: 'json',
+        data:
+        {
+            id: id
+        },
+        success: function (result) {
+            debugger
+            if (!result.isError) {
+                $("#msgid").val(result.data.id);
+                $("#msg").val(result.data.message);
+                $('.modal-body').text(data);
 
-
-
-
-
+            }
+        },
+        error: function (ex) {
+            "No Message Found" + errorAlert(ex);
+        }
+    });
+};
 
 function ConvertPictureToBase64(picture) {
     var pix = picture;
@@ -204,20 +321,22 @@ function ConvertPictureToBase64(picture) {
 
 
 $(document).ready(function () {
-    $('#summernote').summernote({
-        height: 300
-    });
+  $('#summernote').summernote();
+    height: 300
 });
 
-$(document).ready(function () {
-    $('#summernote2').summernote({
-        height: 100
-    });
-});
 
 $(document).ready(function () {
-    $('#table-show').DataTable();
+  $('#summernote2').summernote();
+    height: 100
 });
+
+
+$(document).ready(function () {
+  $('#tableShow').DataTable();
+});
+    
+
 
 
 

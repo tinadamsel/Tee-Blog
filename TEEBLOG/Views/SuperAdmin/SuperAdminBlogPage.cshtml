@@ -7,62 +7,47 @@
 
 <div style="margin-top: 100px;"></div>
 <div class="container-fluid" id="master">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12 col-xm-12 col-md-12 col-lg-12 col-xl-12">
-                <h4 class="font-weight-bold mx-3" style="color: #012970;">Blog Post</h4>
-                <ul class="breadcrumb bg-transparent justify-content-start font-weight-bold" style="color:#899bbd;">
-                    <li class="breadcrumb-item">Home</li>
-                    <li class="breadcrumb-item active" style="color: #51678f;">Blog Post</li>
-                </ul>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-xm-12 col-md-12 col-lg-12 col-xl-12">
+                    <h4 class="font-weight-bold mx-3" style="color: #012970;">Blog Post</h4>
+                    <ul class="breadcrumb bg-transparent justify-content-start font-weight-bold" style="color:#899bbd;">
+                        <li class="breadcrumb-item">Home</li>
+                        <li class="breadcrumb-item active" style="color: #51678f;">Blog Post</li>
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>
-</div>
-</div>
 
-@*@if (Model.Rejected != null)
-{
-    @if (Model.Rejected != null)
+
+    @if (Model != null)
     {
-        <div class="col-sm-12 col-xm-12 col-md-9 col-lg-9 col-xl-9 m-auto">
-            <div class="alert alert-danger alert-dismissible">
+        <div class="col-sm-6 col-xm-6 col-md-10 col-lg-10 col-xl-10 m-auto p-3">
+            <div class="alert alert-success alert-dismissible fade show">
                 <button type="button" class="close" data-dismiss="alert">&times;</button>
-                <strong>Sorry!</strong> &nbsp; @Model.Rejected
+                <strong>Success!</strong> @TempData["Message"]
             </div>
         </div>
     }
-}
 
-@if (Model.Approved != null)
+@*@if (Model != null)
 {
     @if (Model.Approved != null)
     {
         <div class="col-sm-12 col-xm-12 col-md-9 col-lg-9 col-xl-9 m-auto">
             <div class="alert alert-success alert-dismissible">
                 <button type="button" class="close" data-dismiss="alert">&times;</button>
-                <strong>Success!</strong> &nbsp;@Model.Approved
+                <strong>Success!</strong> @TempData["Message"]
             </div>
         </div>
     }
-}*@
+}
+*@
 
-<div class="col-sm-6 col-xm-6 col-md-6 col-lg-6 col-xl-6 m-auto p-3"> 
-    @*<div class="alert alert-success alert-dismissible">
-        <button type="button" class="close" data-dismiss="alert"></button>
-        <strong>Success!</strong> &nbsp; @TempData["Message"]
-    </div>*@
-    <div style="border-radius:10px;" class="p-3 text-center">
-        <span class="text-center text-success font-weight-bold" style="font-family: 'Times New Roman';"> @TempData["Message"]</span>
-    </div>
-</div>
-
-
-<div class="container table-responsive mt-4">
-    <div class="card p-4 bg-white rounded" style="margin-left: 12em;">
+        <div class="container table-responsive mt-4">
             @if (Model.Blogs.Count() > 0)
             {
-                <table class="display table table-borderless" id="table-show" width="100%">
+            <table class="display table table-borderless" id="tableShow" width="100%">
                     <thead>
                         <tr>
                             <th> Name</th>
@@ -78,21 +63,23 @@
                     <tbody>
                         @foreach (var blog in Model.Blogs)
                         {
-
                             <tr>
                                 <td width="5%">@blog.Name</td>
-                                <td width="5%">@blog.DateCreated.ToString("D") </td>
+                                <td width="15%">@blog.DateCreated.ToString("M") </td>
                                 <td width="5%">@blog.CategoryId </td>
-                                <td width="40%">@Html.Raw(@blog.ShortDescription)</td>
+                                <td width="30%">
+                                <a class="btn btn-primary" onclick="Description(@blog.Id)" data-toggle="modal" data-target="#myDescription" style="border-radius: 15px; font-family:'Times New Roman';"> View Description</a>
+                                </td>
+@*                                <td width="40%">@Html.Raw(@blog.ShortDescription)</td>*@
                                 @*<td style="width:30%;">
                         <a asp-controller="Blog" asp-action="ShowBlogPage" asp-route-id="@blog.Id" class="font-weight-bold" style="text-decoration: none; color: black;"> Check Blog Post </a>
                         </td>*@
                                 <td width="15%"><img src="@blog.Picture" style="width: 50px; height: 50px;" /></td>
                                 <td width="30%">
                                     <div class="w-75 btn-group">
-                                        <a asp-controller="SuperAdmin" asp-route-id="@blog.Id" asp-action="ShowBlogPage" class="btn btn-outline-secondary mx-1" style="border-radius: 5px; font-family:'Times New Roman';"> Post</a>
-                                        <a asp-controller="SuperAdmin" asp-route-id="@blog.Id" asp-action="Accept" class="btn btn-outline-secondary mx-1" style="border-radius: 5px;font-family:'Times New Roman';">Accept</a>
-                                        <a asp-controller="SuperAdmin" asp-route-id="@blog.Id" asp-action="Decline" class="btn btn-outline-secondary mx-1" style="border-radius: 5px;font-family:'Times New Roman';">Reject</a>
+                                        <a asp-controller="SuperAdmin" asp-route-id="@blog.Id" asp-action="ShowBlogPage" class="btn btn-outline-primary mx-1" style="border-radius: 5px; font-family:'Times New Roman';"> View</a>
+                                        <a asp-controller="SuperAdmin" asp-route-id="@blog.Id" asp-action="Accept" class="btn btn-outline-primary mx-1" style="border-radius: 5px;font-family:'Times New Roman';">Accept</a>
+                                        <a asp-controller="SuperAdmin" asp-route-id="@blog.Id" asp-action="Decline" class="btn btn-outline-danger mx-1" style="border-radius: 5px;font-family:'Times New Roman';">Reject</a>
                                     </div>
                                 </td>
                             </tr>
@@ -105,10 +92,34 @@
                 <p> No Blog Post added </p>
             }
         </div>
-    </div>
-
 </div>
 
 
 
+<!-- Description Modal -->
 
+
+<div aria-hidden="true" role="dialog" tabindex="-1" id="myDescription" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h4 class="modal-title">Short Description</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <div class="modal-body">
+                <input id="descid" hidden>
+                <textarea cols="20" rows="10" id="desc" class="form-control"> 
+
+                    </textarea>
+
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Description Modal End -->

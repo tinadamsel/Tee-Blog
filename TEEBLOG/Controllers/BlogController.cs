@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using System;
 using System.Collections;
+using System.Reflection.Metadata;
 using System.Xml.Linq;
 
 namespace TEEBLOG.Controllers
@@ -170,6 +171,41 @@ namespace TEEBLOG.Controllers
             }
             return View(blog);
             
+        }
+        //[HttpGet]
+        //public IActionResult Description(int? id)
+        //{
+        //    if (id > 0)
+        //    {
+        //        var description = _context.Blogs.Where(x => x.Id == id && !x.Deleted && x.Active).FirstOrDefault();
+        //        if (description != null)
+        //        {
+        //            return View(description);
+        //        }
+        //    }
+        //    return NotFound();
+        //}
+
+        [HttpGet]
+        public JsonResult GetDescription(int? id)
+        {
+            try
+            {
+                if (id > 0)
+                {
+                    var description = _context.Blogs.Where(x => x.Id == id && !x.Deleted && x.Active).FirstOrDefault();
+                    if (description != null)
+                    {
+                        return Json(new { isError = false, data = description });
+                    }
+                }
+                return Json(new { isError = true, message = "No description found!" });
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public IActionResult Show(int? name)

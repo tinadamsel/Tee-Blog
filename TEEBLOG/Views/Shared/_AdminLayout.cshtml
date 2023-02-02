@@ -14,31 +14,129 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
 
     <!-- include summernote css -->
-    <link href="~/summernote/summernote-bs4.min.css" rel="stylesheet" />
-
+    <link href="~/summernote/summernote-bs4.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/sweetalert2.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/sweetalert.min.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/TEEBLOG.styles.css" asp-append-version="true" />
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css" />
+    <link href="~/css/sweetalert.min.css" rel="stylesheet" />
+    <link href="~/css/sweetalert2.css" rel="stylesheet" />
     <link rel="shortcut icon" href="~/img/" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css" />
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+
     <script>
+		function errorAlert(message) {
+			Swal.fire({
+                title: 'Oops',
+				icon: 'error',
+				text: message,
+				timer: 60000,
+				confirmButtonColor: "red",
+			})
+		}
+
+		function infoAlert(message) {
+			Swal.fire({
+                title: 'Incorrect Details',
+				icon: 'info',
+				text: message,
+				confirmButtonColor: "blue",
+			})
+		}
+
+		//function infoAlertWithStyles(message) {
+		//	Swal.fire({
+		//		title: 'Incomplete Payment',
+		//		icon: 'info',
+		//		text: message,
+		//		confirmButtonColor: "#FF9B44",
+		//	})
+		//}
+
+		//function successAlert(message) {
+		//	Swal.fire({
+		//		icon: 'success',
+		//		text: message,
+		//		timer: 60000,
+		//		confirmButtonColor: "#FF9B44",
+		//	})
+		//}
+
+		//function newErrorAlert(message, url) {
+		//	Swal.fire({
+		//		icon: 'error',
+		//		text: message,
+		//		confirmButtonColor: "#FF9B44",
+		//	}).then((isConfirm) => {
+		//		if (isConfirm) {
+		//			location.reload(url);
+		//		}
+		//	})
+		//}
+
+		function newSuccessAlert(message, url) {
+			Swal.fire({
+                title: 'Successful',
+				icon: 'success',
+				text: message,
+				confirmButtonColor: "green",
+			}).then((isConfirm) => {
+				if (isConfirm) {
+                    location.href = url;
+				}
+			})
+		}
+		//function successAlertWithRedirect(message, url) {
+		//	Swal.fire({
+		//		title: "Success",
+		//		text: message,
+		//		icon: "success",
+		//		timer: 30000,
+		//		overlay: "background - color: rgba(43, 165, 137, 0.45)",
+		//		confirmButtonColor: "#FF9B44",
+		//	}).then(function () {
+
+		//		location.href = url;
+		//	})
+		//}
+	</script>
+
+
+    @*<script>
+
         function newSuccessAlert(message, url) {
-            debugger;
             Swal.fire({
-                title: "SUCCEEDED",
-                icon: 'success',
+                icon: "success",
+                title: "Succeeded",
                 text: message,
-                confirmButtonColor: 'skyblue',
+                confirmButtonColor: "#FF9B44",
             }).then((isConfirm) => {
                 if (isConfirm) {
                     location.href = url;
                 }
             })
-
         }
-    </script>
+
+        function errorAlert(message) {
+            Swal.fire({
+                icon: "error",
+                title: 'Oops',
+                text: message,
+                confirmButtonColor: "#FF9B44",
+            })
+        }
+
+        function infoAlert(message) {
+            Swal.fire({
+                icon: "warning",
+                title: "Incorrect Details",
+                text: message,
+                confirmButtonColor: "#FF9B44",
+            })
+        }
+    </script>*@
+
+       
 </head>
 
 <body class="bg-light">
@@ -84,42 +182,43 @@
                 <a class="nav-link font-weight-bold" style="color: #012970;" asp-controller="Admin" asp-action="Category"> <i class="fa fa-book icon"></i>&nbsp; Category </a>
                 <hr class="dropdown-divider" />
             </li>
-           
                 @if (userRole?.ToLower() == "super")
                 {
                     <li class="nav-item">
-                        <a class="nav-link font-weight-bold" style="color: #012970;" asp-controller="SuperAdmin" asp-action="SuperAdminBlogPage"> <i class="fa fa-pencil-square-o icon"></i>&nbsp; BlogPost </a>
+                        <a class="nav-link font-weight-bold" 
+                        style="color: #012970;" asp-controller="SuperAdmin" asp-action="SuperAdminBlogPage"> <i class="fa fa-pencil-square-o icon"></i>&nbsp; BlogPost </a>
                         <hr class="dropdown-divider" />
-                    </li>
+                </li>
                 }
                 else
                 {
                     <li class="nav-item">
-                        <a class="nav-link font-weight-bold" style="color: #012970;" asp-controller="Blog" asp-action="AdminBlogPage"> <i class="fa fa-pencil-square-o icon"></i>&nbsp; BlogPost </a>
+                        <a class="nav-link font-weight-bold" 
+                        style="color: #012970;" asp-controller="Blog" asp-action="AdminBlogPage"> <i class="fa fa-pencil-square-o icon"></i>&nbsp; BlogPost </a>
                         <hr class="dropdown-divider" />
                     </li>
                 }
-             <li class="nav-item">
-                <a class="nav-link font-weight-bold" style="color: #012970;" asp-controller="SuperAdmin" asp-action="ApprovedPosts"><i class="fa fa-check" icon"></i>&nbsp; ApprovedPosts </a>
+                @*<li class="nav-item">
+                    <a class="nav-link font-weight-bold" style="color: #012970;" asp-controller="Blog" asp-action="AdminBlogPage"> <i class="fa fa-pencil-square-o icon"></i>&nbsp; BlogPost </a>
                     <hr class="dropdown-divider" />
-             </li>
-                
-             <li class="nav-item">
-                 <a class="nav-link font-weight-bold" style="color: #012970;" asp-controller="Contact" asp-action="AdminContactPage"> <i class="fa fa-envelope icon"></i>&nbsp; Contact </a>
-                 <hr class="dropdown-divider" />
-             </li>
-            <li class="nav-item">
-                <a class="nav-link font-weight-bold" style="color: #012970;" asp-controller="Reviews" asp-action="AdminReviews"><i class="fa fa-comments icon"></i>&nbsp; Comments </a>
-                <hr class="dropdown-divider" />
-            </li>
+                </li>*@
+
+                 <li class="nav-item">
+                    <a class="nav-link font-weight-bold" style="color: #012970;" asp-controller="SuperAdmin" asp-action="ApprovedPosts"><i class="fa fa-check" icon"></i>&nbsp; ApprovedPosts </a>
+                        <hr class="dropdown-divider" />
+                 </li>
+                 <li class="nav-item">
+                     <a class="nav-link font-weight-bold" style="color: #012970;" asp-controller="Contact" asp-action="AdminContactPage"> <i class="fa fa-envelope icon"></i>&nbsp; Contact </a>
+                     <hr class="dropdown-divider" />
+                 </li>
+                <li class="nav-item">
+                    <a class="nav-link font-weight-bold" style="color: #012970;" asp-controller="Reviews" asp-action="AdminReviews"><i class="fa fa-comments icon"></i>&nbsp; Comments </a>
+                    <hr class="dropdown-divider" />
+                </li>
              @*<li class="nav-item">
                     <a class="nav-link font-weight-bold" style="color: #012970;" asp-controller="Video" asp-action="AdminVideoPage"> <i class="fa fa-video-camera icon"></i>&nbsp; Videos </a>
                     <hr class="dropdown-divider" />
              </li>*@
-                @* <li class="nav-item">
-                <a class="nav-link font-weight-bold" style="color: #012970;" asp-controller="Profile" asp-action="Profile"> <i class="fa fa-user icon"></i>&nbsp; Profile </a>
-                <hr class="dropdown-divider" />
-            </li>*@
                 <li class="nav-item">
                     <a class="nav-link font-weight-bold" style="color: #012970;" asp-controller="FAQs" asp-action="FAQs"> <i class="fa fa-question-circle icon"></i>&nbsp; FAQs </a>
                     <hr class="dropdown-divider" />
@@ -145,13 +244,13 @@
                     </div>
                 </footer>
 
-                @*<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>*@
 
+                <script src="~/js/sweetalert.min.js"></script>
+                <script src="~/js/sweetalert2.all.min.js"></script>
                 <script src="~/lib/jquery/dist/jquery.js"></script>
-                <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
-
+                <script src="~/js/jquery.min.js"></script>
+                <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script> 
                 <script src="~/summernote/summernote-bs4.min.js"></script>
-
                 @*<script src="~/lib/bootstrap/dist/js/bootstrapjs.js"></script>*@
                 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
                 @*<script src="~/lib/jquery/dist/custom.js"></script>*@
@@ -160,12 +259,11 @@
                 <script src="~/lib/jquery/dist/owl.carousel.min.js"></script>
                 <script src="~/js/site.js" asp-append-version="true"></script>
                 <script src="~/js/Teeblog.js" asp-append-version="true"></script>
-                <script src="~/js/sweetalert2.all.min.js" asp-append-version="true"></script>
-                <script src="~/js/sweetalert.min.js" asp-append-version="true"></script>
                 @*<script src="~/simple-datatables/simple-datatables.js" asp-append-version="true"></script>*@
-                <script type="text/javascript" @*charset="utf8"*@ src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"> </script>
-                @*<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-                <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>*@
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+                <script type="text/javascript" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"> </script>
+                <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
                 <!-- include summernote js -->
 
                 @*  <script src="~/summernote/summernote-bs4.js"></script>*@

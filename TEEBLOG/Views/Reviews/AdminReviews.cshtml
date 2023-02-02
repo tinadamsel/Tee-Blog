@@ -6,7 +6,7 @@
 }
 
 <div style="margin-top: 100px;"></div>
-<div class="container-fluid" id="master">
+<div class="container-fluid" id="master"> 
     <div class="container">
         <div class="row">
             <div class="col-sm-12 col-xm-12 col-md-12 col-lg-12 col-xl-12">
@@ -20,14 +20,33 @@
     </div>
     <br />
 
-    <div class="p-3 text-center">
-        <span class="text-center text-success font-weight-bold" style="font-family: 'Times New Roman';"> @TempData["Message"]</span>
-    </div>
+       @*  @if (Model != null)
+            {
+            <div class="justify-content-center p-3">
+                <div class="alert alert-success alert-dismissible fade show">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>Success!</strong> @TempData["Message"]
+                </div>
+            </div>
+         }*@
+            @if (Model != null)
+            {
+                @if (Model != null)
+                {
+                  <div class="justify-content-center p-3">
+                    <div class="alert alert-success alert-dismissible fade show">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>Success!</strong> @TempData["Message"]
+                </div>
+            </div>
+                }
+            }
+        <br /> <br /> 
 
     <div class="container">
             @if (Model.Count() > 0)
             {
-                    <table class="display" id="table-show" width="100%" style="color:#51678f;">
+            <table class="display" id="tableShow" width="100%" style="color:#51678f;">
                         <thead>
                             <tr>
                                 <th> CustomerId</th>
@@ -69,6 +88,7 @@
     </div>
 
 </div>
+
 
 
 

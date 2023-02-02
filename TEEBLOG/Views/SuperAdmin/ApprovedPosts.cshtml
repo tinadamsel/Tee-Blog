@@ -33,16 +33,14 @@
         </p>
         </div>*@
     </div>
-</div>
-    </div>
-<br />
-<br />
+
+    <br />
+    <br />
 
 <div class="container table-responsive">
-    <div class="card p-4 bg-white rounded" style="margin-left: 12em;">
         @if (Model.Count() > 0)
         {
-            <table class="display table table-borderless" id="table-show" width="100%">
+                <table class="display table table-borderless" id="tableShow" width="100%">
                 <thead>
                     <tr>
                         <th> Name</th>
@@ -61,16 +59,16 @@
 
                         <tr>
                             <td width="5%">@blog.Name</td>
-                            <td width="5%">@blog.DateCreated.ToString("D") </td>
+                            <td width="15%">@blog.DateCreated.ToString("M") </td>
                             <td width="5%">@blog.CategoryId </td>
-                            <td width="40%">@Html.Raw(@blog.ShortDescription)</td>
+                            <td width="30%"><a class="btn btn-primary" onclick="Description(@blog.Id)" data-toggle="modal" data-target="#myDescription" style="border-radius: 15px; font-family:'Times New Roman';"> View Description </a> </td>
                             @*<td style="width:30%;">
                     <a asp-controller="Blog" asp-action="ShowBlogPage" asp-route-id="@blog.Id" class="font-weight-bold" style="text-decoration: none; color: black;"> Check Blog Post </a>
                     </td>*@
                             <td width="15%"><img src="@blog.Picture" style="width: 50px; height: 50px;" /></td>
                             <td width="30%">
                                 <div class="w-75 btn-group">
-                                    <a asp-controller="SuperAdmin" asp-route-id="@blog.Id" asp-action="ShowBlogPage" class="btn btn-outline-secondary mx-1" style="border-radius: 5px; font-family:'Times New Roman';"> Post</a>
+                                    <a asp-controller="SuperAdmin" asp-route-id="@blog.Id" asp-action="ShowBlogPage" class="btn btn-outline-primary mx-1" style="border-radius: 5px; font-family:'Times New Roman';"> View</a>
                                    @* <a asp-controller="SuperAdmin" asp-route-id="@blog.Id" asp-action="Accept" class="btn btn-outline-secondary mx-1" style="border-radius: 5px;font-family:'Times New Roman';">Accept</a>
                                     <a asp-controller="SuperAdmin" asp-route-id="@blog.Id" asp-action="Decline" class="btn btn-outline-secondary mx-1" style="border-radius: 5px;font-family:'Times New Roman';">Reject</a>*@
                                 </div>
@@ -84,11 +82,35 @@
         {
             <p> No Blog Post Approved </p>
         }
+</div>
+
+</div>
+
+<!-- Description Modal -->
+
+
+<div aria-hidden="true" role="dialog" tabindex="-1" id="myDescription" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h4 class="modal-title">Short Description</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <div class="modal-body">
+                <input id="descid" hidden>
+                <textarea cols="20" rows="10" id="desc" class="form-control"> 
+
+                    </textarea>
+
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+
+        </div>
     </div>
 </div>
-
-</div>
-
-
-
-
+<!-- Description Modal End -->

@@ -20,5 +20,11 @@ namespace Core.Models
 		public DateTime Date { get; set; }
 		public bool isApproved { get; set; }
 
-	}
+        [NotMapped]
+        public string Error { get; set; }
+
+        [NotMapped]
+        public string Success { get; set; }
+
+    }
 }

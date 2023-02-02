@@ -7,22 +7,74 @@
     <title>@ViewData["Title"] - TEEBLOG</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/aos.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/glightbox.min.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/sweetalert2.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/sweetalert.min.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/TEEBLOG.styles.css" asp-append-version="true" />
+    @*<link rel="stylesheet" href="~/css/aos.css" asp-append-version="true" />*@
+    @*<link rel="stylesheet" href="~/css/glightbox.min.css" asp-append-version="true" />*@
+
+    <!-- include summernote css -->
+    <link href="~/summernote/summernote-bs4.min.css" rel="stylesheet" />
+    <link href="~/css/sweetalert.min.css" rel="stylesheet" />
+    <link href="~/css/sweetalert2.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/TEEBLOG.styles.css" />
     <link rel="shortcut icon" href="~/img/" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css" />
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
 
     <script>
-        function newSuccessAlert(message, url) {
-            debugger;
+        function errorAlert(message) {
             Swal.fire({
-                title: "SUCCEEDED",
-                icon: "success",
+                title: 'Oops',
+                icon: 'error',
                 text: message,
-                confirmButtonColor: 'Green',
+                timer: 60000,
+                confirmButtonColor: "red",
+            })
+        }
+
+        function infoAlert(message) {
+            Swal.fire({
+                title: 'Incorrect Details',
+                icon: 'warning',
+                text: message,
+                confirmButtonColor: "skyblue",
+            })
+        }
+
+        function infoAlertWithStyles(message) {
+            Swal.fire({
+                title: 'Incomplete Payment',
+                icon: 'info',
+                text: message,
+                confirmButtonColor: "#FF9B44",
+            })
+        }
+
+        function successAlert(message) {
+            Swal.fire({
+                icon: 'success',
+                text: message,
+                timer: 60000,
+                confirmButtonColor: "#FF9B44",
+            })
+        }
+
+        function newErrorAlert(message, url) {
+            Swal.fire({
+                icon: 'error',
+                text: message,
+                confirmButtonColor: "#FF9B44",
+            }).then((isConfirm) => {
+                if (isConfirm) {
+                    location.reload(url);
+                }
+            })
+        }
+
+        function newSuccessAlert(message, url) {
+            Swal.fire({
+                title: 'Successful',
+                icon: 'success',
+                text: message,
+                confirmButtonColor: "green",
             }).then((isConfirm) => {
                 if (isConfirm) {
                     location.href = url;
@@ -30,44 +82,55 @@
             })
 
         }
+        function successAlertWithRedirect(message, url) {
+            Swal.fire({
+                title: "Success",
+                text: message,
+                icon: "success",
+                timer: 30000,
+                overlay: "background - color: rgba(43, 165, 137, 0.45)",
+                confirmButtonColor: "#FF9B44",
+            }).then(function () {
+
+                location.href = url;
+            })
+        }
+    </script>
+
+
+    @*<script>
+
+        function newSuccessAlert(message, url) {
+            Swal.fire({
+                icon: "success",
+                title: "Succeeded",
+                text: message,
+                confirmButtonColor: "#FF9B44",
+            }).then((isConfirm) => {
+                if (isConfirm) {
+                    location.href = url;
+                }
+            }) 
+        }
 
         function errorAlert(message) {
             Swal.fire({
                 icon: "error",
+                title: 'Oops',
                 text: message,
-                timer: 60000,
-                confirmButtonColor: 'green',
+                confirmButtonColor: "#FF9B44",
             })
         }
 
         function infoAlert(message) {
             Swal.fire({
-                icon: "info",
+                icon: "warning",
+                title: "",
                 text: message,
-                confirmButtonColor: 'green',
+                confirmButtonColor: "#FF9B44",
             })
         }
-
-                //function newSweetAlert(msg, url) {
-                //    debugger;
-                //    Swal.fire({
-                //        Icon: 'success',
-                //        text: msg,
-                //        showDenyButton: false,
-                //        showCancelButton: true,
-                //        confirmButtonText: 'Ok',
-                //    }).then((result) => {
-                //        debugger;
-                //        if (result.isConfirmed) {
-                //            debugger;
-                //            location.reload(url);
-                //        }
-                //    })
-                //}
-    </script>
-
-
-
+    </script>*@
 
 </head>
 <body>
@@ -136,11 +199,11 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12 col-xm-12 col-md-5 col-lg-5 col-xl-5">
-                        <h4 class="h6 heading"> About Teeblog</h4>
+                        <h4 class="h6 heading text-success"> <b> About Teeblog </b></h4>
                         <p class="p lead" style="font-family:'Times New Roman';">Teebog brings you latest news ranging from health news, all business news, different lifestyles around the world people and the beauty of their cultures as well as best news in the entertainment and music industry. </p>
                     </div>
                     <div class="col-sm-6 col-xm-6 col-md-2 col-lg-2 col-xl-2">
-                        <h4 class="h6 heading"> Categories</h4>
+                        <h4 class="h6 heading text-success"> <b> Categories</b></h4>
                         <ul class="main">
                             <li class="navbutton">
                                 <a class="text-light" asp-controller="Category" asp-action="Category"><i class="fa fa-angle-double-right"></i> Health</a>
@@ -166,7 +229,7 @@
                         </ul>
                     </div>
                     <div class="col-sm-6 col-xm-6 col-md-2 col-lg-2 col-xl-2">
-                        <h4 class="h6 heading"> Navigation</h4>
+                        <h4 class="h6 heading text-success"> <b> Navigation</b></h4>
                         <ul class="main">
                             <li class="navbutton">
                                 <a class="text-light" asp-controller="Base" asp-action="Index"><i class="fa fa-angle-double-right"></i> Home</a>
@@ -186,7 +249,7 @@
                         </ul>
                     </div>
                     <div class="col-sm-12 col-xm-12 col-md-3 col-lg-3 col-xl-3" style="font-family:'Times New Roman';">
-                        <h4 class="h6 heading"> Reach Us</h4>
+                        <h4 class="h6 heading text-success"> <b> Contact Us</b></h4>
                         <p> Church Street, Ugboezeji, Abakpa Nike, Enugu, Nigeria</p>
                         <p> +234 98 6783 5432</p>
                         <p> hello@teeblog.com</p>
@@ -206,18 +269,19 @@
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/js/sweetalert.min.js"></script>
+    <script src="~/js/sweetalert2.all.min.js"></script>
+    <script src="~/js/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrapjs.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    @* <script src="~/lib/jquery/dist/custom.js"></script>*@
-    <script src="~/lib/jquery/dist/smoothscroll.js"></script>
-    <script src="~/lib/jquery/dist/wow.min.js"></script>
+    <script src="~/summernote/summernote-bs4.min.js"></script>
     <script src="~/lib/jquery/dist/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"> </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="~/js/site.js"></script>
     <script src="~/js/Teeblog.js"></script>
-    <script src="~/js/aos.js"></script>
-    <script src="~/js/glightbox.min.js"></script>
-    <script src="~/js/sweetalert2.all.min.js" asp-append-version="true"></script>
-    <script src="~/js/sweetalert.min.js" asp-append-version="true"></script>
+    @*<script src="~/js/aos.js"></script>*@
+    @*<script src="~/js/glightbox.min.js"></script>*@
     @*<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>*@
     @*<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>*@
     @await RenderSectionAsync("Scripts", required: false)

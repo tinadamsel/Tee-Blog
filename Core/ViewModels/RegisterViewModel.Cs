@@ -19,6 +19,8 @@ namespace Core.ViewModels
         [Required]
         [RegularExpression("/^[a-zA-Z0-9.!#$%&'*+\\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/")]
         public string? Password { get; set; }
-        public bool ComfirmPassword { get; set; }
+        [Required(ErrorMessage = "Comfirm password is required")]
+        [Compare("Password", ErrorMessage = "Password does not match")]
+        public string? ComfirmPassword { get; set; }
     }
 }

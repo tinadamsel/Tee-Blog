@@ -32,7 +32,8 @@ namespace Logic.Helper
         public ApplicationUser FindUserByEmail(string email) 
         {
             //query
-            return _userManager.Users.Where(x => x.Email == email && !x.IsDeactivated)?.FirstOrDefault();
+         var user = _userManager.Users.Where(x => x.Email == email && !x.IsDeactivated)?.FirstOrDefault();
+            return user;
         }
 
         public async Task<bool> CreateUser(RegisterViewModel data)
@@ -40,6 +41,7 @@ namespace Logic.Helper
             
             var user = new ApplicationUser() //instanciating or initialize
             {
+               
                 Email = data.Email,
                 FirstName = data.FirstName,
                 LastName = data.LastName,
@@ -224,7 +226,7 @@ namespace Logic.Helper
                     var customer = new Customer()
                     {
                         Name = review.Name,
-                        Email = review.Email,
+                        Email = review.Email, 
                     };
 
                     var customerDetail = CreateCustomer(customer);
@@ -288,6 +290,35 @@ namespace Logic.Helper
             }
             return null;
         }
+
+        //public async Task<string> GetUserLayout(string userId)
+        //{
+        //    if (userId != null)
+        //    {
+        //        var returnUrl = "";
+        //        var User = await FindByIdAsync(userId).ConfigureAwait(false);
+        //        var roles = await _userManager.GetRolesAsync(User).ConfigureAwait(false);
+        //        foreach (var userRole in roles)
+        //        {
+        //            switch (userRole)
+        //            {
+        //                case "SuperAdmin":
+        //                    returnUrl = "/SuperAdmin/SuperAdminBlogPage";
+        //                    break;
+        //                case "Admin":
+        //                    returnUrl = "/Admin/Dashboard";
+        //                    break;
+        //                default:
+        //                    break;
+        //            }
+        //        }
+        //        return returnUrl;
+        //    }
+        //    return null;
+
+        //}
+
+
 
         public List<Review> GetListOfReviews(int blogId)
         {
