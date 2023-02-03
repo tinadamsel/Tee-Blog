@@ -27,5 +27,20 @@ namespace TEEBLOG.Controllers
             IEnumerable<Blog> blogs = _context.Blogs.Include(c => c.Categories).ToList();
             return View(blogs);
         }
+
+        [HttpGet]
+        public IActionResult BlogByCategory(int categoryId)
+        {
+            var listOfCategory = new List<Blog>();
+            if (categoryId != 0)
+            {
+                var blogs = _context.Blogs.Where(c => c.Id != 0 && c.CategoryId == categoryId && c.Active).Include(x => x.Categories).ToList();
+                if (blogs != null && blogs.Count > 0)
+                {
+                    return View(blogs);
+                }
+            }
+            return View(listOfCategory);
+        }
     }
 }
