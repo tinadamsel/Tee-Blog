@@ -42,17 +42,13 @@ namespace TEEBLOG.Controllers
                     CustomerId = x.CustomerId,
                     Date = x.Date, 
                     Customers= x.Customers,
-                    Email = x.Customers.Email,
-                    Name = x.Customers.Name,
+                    Email = x.Customers?.Email,
+                    Name = x.Customers?.Name,
                 }).ToList();
 
                 return View(result);
             }
-            else
-            {
-                return null;
-            }
-
+            return View(result);
         }
         [HttpGet]
 
@@ -62,7 +58,7 @@ namespace TEEBLOG.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult AddSupport(string allSupport)
+        public JsonResult AddSupport(string allSupport)
         {
             if (allSupport != null)
             {

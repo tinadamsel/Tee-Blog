@@ -38,7 +38,6 @@
                         <th> Date Created</th>
                         <th> Category </th>
                         <th> Short Description </th>
-                        @*<th> Description </th>*@
                         <th> Picture</th>
                         <th> Actions</th>
                     </tr>
@@ -55,10 +54,6 @@
                             <td width="35%">
                                 <a class="btn btn-primary" onclick="Description(@blog.Id)" data-toggle="modal" data-target="#myDescription" style="border-radius: 15px; font-family:'Times New Roman';"> View Description </a>
                             </td>
-                                @* <td width="40%">@Html.Raw(@blog.ShortDescription)</td> *@
-                                @*<td style="width:30%;">
-                                    <a asp-controller="Blog" asp-action="ShowBlogPage" asp-route-id="@blog.Id" class="font-weight-bold" style="text-decoration: none; color: black;"> Check Blog Post </a>
-                                </td>*@
                             <td width="30%"><img src="@blog.Picture" style="width: 50px; height: 50px;"/></td>
                             <td width="10%">
                                 <div class="w-75 btn-group">

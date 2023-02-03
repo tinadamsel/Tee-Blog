@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using System.Reflection.Metadata;
 using System.Xml.Linq;
+using TEEBLOG.Models;
 using static Core.DbContext.TeeEnums;
 
 namespace TEEBLOG.Controllers
@@ -43,10 +44,7 @@ namespace TEEBLOG.Controllers
 
                 return View(result);
             }
-            else
-            {
-                return null;
-            }
+            return View(result);
         }
 
         public IActionResult AddReview(string allReview)
@@ -123,7 +121,10 @@ namespace TEEBLOG.Controllers
                     _context.Reviews.Update(review);
                     _context.SaveChanges();
 
-                    TempData["Message"] = "Review Approved";
+
+                    Message msg = new Message("The Email Address you entered does not exist,try again ", (int)Message.Category.Error);
+                    TempData["Message"] = msg;
+
                 }
             }
             return RedirectToAction("AdminReviews","Reviews");
@@ -138,8 +139,9 @@ namespace TEEBLOG.Controllers
                 {
                     review.isApproved = false;
                     _context.Reviews.Update(review);
-                    _context.SaveChanges(); 
-                    TempData["Message"] = "Review Declined";
+                    _context.SaveChanges();
+                    Message msg = new Message("TReview Declined", (int)Message.Category.Error);
+                    TempData["Message"] = msg;
                 }
             }
             return RedirectToAction("AdminReviews", "Reviews");

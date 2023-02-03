@@ -48,7 +48,7 @@ namespace Logic.Helper
                 UserName = data.Email,
                 DateRegistered = DateTime.Now,
             }; 
-            var result = await _userManager.CreateAsync(user, data.Password);
+            var result = await _userManager.CreateAsync(user, data.Password).ConfigureAwait(false);
             if (result.Succeeded)
                 return true;
             return false;
@@ -110,6 +110,8 @@ namespace Logic.Helper
                     Picture = blog.Picture,
                     CategoryId = blog.CategoryId,
                     Categories = blog.Categories,
+                    Active = true,
+                    Deleted = false,
                 };
                 var result = _context.Add(newBlog);
                     _context.SaveChanges();
@@ -166,29 +168,7 @@ namespace Logic.Helper
             }
             return false;
         }
-
-        //public bool SendAdminEmail(SupportViewModel )
-        //{
-        //    if (Admin != null)
-        //    {
-        //        string toEmail = Admin.Email;
-        //        string subject = "From Tee Blog";
-
-        //        var message = "Dear " + Admin.FirstName + "," + "</br> " +
-        //         "This is to notify you, that you have a message from Tee Blog." +
-        //          "Tee Group.";
-
-        //        var isSent = emailService.SendEmail(toEmail, subject, message);
-        //        if (isSent)
-        //        {
-        //            return true;
-        //        }
-
-
-        //    }
-        //    return false;
-        //}
-
+       
         public Customer CreateCustomer(Customer data) 
         {
             if ( !String.IsNullOrEmpty(data.Name) && !String.IsNullOrEmpty(data.Email))

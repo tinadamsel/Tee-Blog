@@ -50,7 +50,7 @@ namespace TEEBLOG.Controllers
         }
 
         [HttpPost]
-        public IActionResult addblog(string allPosts) 
+        public JsonResult Addblog(string allPosts) 
         {
             ViewBag.Categories = _dropdownHelper.DropdownOfCategories();
 
@@ -72,20 +72,6 @@ namespace TEEBLOG.Controllers
             }
             return Json(new { isError = true, message = "Post Not Successful", url = "/Admin/Dashboard"});
         }
-
-
-        //public IActionResult NewBlogPost(Blog blog)
-        //{
-        //    
-        //    if (blog != null)
-        //    {
-        //        _context.Blogs.Add(blog);
-        //        _context.SaveChanges(); 
-        //        return RedirectToAction("AdminBlogPage");
-        //    }
-        //    return View(blog);
-        //}
-
         [HttpGet]
         
         public IActionResult Edit(int? id)
@@ -172,19 +158,6 @@ namespace TEEBLOG.Controllers
             return View(blog);
             
         }
-        //[HttpGet]
-        //public IActionResult Description(int? id)
-        //{
-        //    if (id > 0)
-        //    {
-        //        var description = _context.Blogs.Where(x => x.Id == id && !x.Deleted && x.Active).FirstOrDefault();
-        //        if (description != null)
-        //        {
-        //            return View(description);
-        //        }
-        //    }
-        //    return NotFound();
-        //}
 
         [HttpGet]
         public JsonResult GetDescription(int? id)
@@ -234,11 +207,6 @@ namespace TEEBLOG.Controllers
         }
 
     }
-
-
-    
-
-
 
 }
 

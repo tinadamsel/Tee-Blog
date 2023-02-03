@@ -19,9 +19,6 @@
     </div>
 
    
-    @using (Html.BeginForm())   
-    {  
-    @Html.AntiForgeryToken()
     
         <div class="container">
             <div class="row">
@@ -40,11 +37,11 @@
                         </div>
                         <div class="form-group">
                             <label for="ShortDescription"> Short Description </label>
-                            <textarea id="summernote2" required class="form-control"></textarea>
+                            <textarea required id="shortDes" rows="3" class="form-control summernote"></textarea>
                         </div>
                         <div class="form-group">
                             <label for="Description"> Description </label>
-                            <textarea id="summernote" required class=" form-control"></textarea>
+                            <textarea required id="blogContent" class="form-control summernote"></textarea>
                         </div>
                         <div class="form-group">
                             <label for="Picture"> Picture</label>
@@ -52,16 +49,25 @@
                         </div>
                         <div class="text-center justify-content-center">
                             <button type="submit" onclick="addblog()" class="btn btn-primary w-25 p-2"> Add Post</button>
-                            &nbsp;
-                            <a class="btn btn-primary w-25 p-2" asp-controller="Blog" asp-action="AdminBlogpage"> Back</a>
                         </div>
-
                     </div>
                 </div>
             </div>
         </div>
-    }
+    
 </div>
+
+
+<script>
+    $(document).ready(function () 
+    {
+        debugger;
+        $('.summernote').summernote({
+            height: 300,
+            placeholder: "Write your content here",
+        });
+    });
+</script>
 
 
 

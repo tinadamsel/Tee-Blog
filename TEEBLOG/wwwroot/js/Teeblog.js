@@ -96,8 +96,8 @@ function addblog() {
     var post = {};
     post.Name = $("#name").val();
     post.CategoryId = $("#categories").val();
-    post.ShortDescription = $("#summernote2").val();
-    post.Description = $("#summernote").val();
+    post.ShortDescription = $("#shortDes").val();
+    post.Description = $("#blogContent").val();
     var blogPix = document.getElementById("picture").files; 
     debugger
     if (post.Name != "" && post.Shortdescription != "" && post.Description != "" && blogPix[0] != null && post.Category != "") {
@@ -111,14 +111,14 @@ function addblog() {
                 $.ajax({
                     type: "POST",
                     dataType: "Json",
-                    url: "/Blog/addblog",
+                    url: "/Blog/Addblog",
                     data: { allPosts: allPost },
                     success: function (result) {
                         debugger
                         if (!result.isError) {
                             message = "Post added successfully."
-                            url = "/Blog/AdminBlogPage"
-                            newSuccessAlert(result.message, result.url);
+                            url = result.url;
+                            newSuccessAlert(result.message, url);
                         }
                         else {
                             message = "Your details are not Complete",
@@ -156,8 +156,6 @@ function AddSupport() {
             success: function (result) {
                 debugger;
                 if (!result.isError) {
-                    message = "Your Message was successfully sent. Thank you for Reaching Out."
-                    url = "/Contact/AdminContactPage"
                     newSuccessAlert(result.message, result.url);
                 }
                 else {
@@ -238,22 +236,22 @@ function AddReview(id) {
 //    });
 //};
 
-//function Description(id) {
-//    debugger;
-//    $.ajax({
-//        type: "GET",
-//        url: '/Blog/Description/' + id,
-//        dataType: "jason",
-//        data: { id: id },
-//        success: function (data) {
-//            $('.modal-body').html(data);
-//            $("#myDescription").modal("show");
+function Description(id) {
+    debugger;
+    $.ajax({
+        type: "GET",
+        url: '/Blog/Description/' + id,
+        dataType: "jason",
+        data: { id: id },
+        success: function (data) {
+            $('.modal-body').html(data);
+            $("#myDescription").modal("show");
 
-//        }
+        }
 
-//    })
+    })
 
-//}
+}
 
 function Description(id) {
     debugger;
@@ -269,8 +267,7 @@ function Description(id) {
             debugger
             if (!result.isError) {
                 $("#descid").val(result.data.id);
-                var ddd = $('#desc').html($.parseHTML(decodeURI(result.data.description)));
-               //var ee = $("#desc").summernote(result.data.description);
+                $('#desc').summernote('code', result.data.shortDescription);
                 $('.modal-body').text(data);
                 
             }
@@ -320,21 +317,9 @@ function ConvertPictureToBase64(picture) {
 }
 
 
-$(document).ready(function () {
-  $('#summernote').summernote();
-    height: 300
-});
-
-
-$(document).ready(function () {
-  $('#summernote2').summernote();
-    height: 100
-});
-
-
-$(document).ready(function () {
-  $('#tableShow').DataTable();
-});
+//$(document).ready(function () {
+//  $('#tableShow').DataTable();
+//});
     
 
 

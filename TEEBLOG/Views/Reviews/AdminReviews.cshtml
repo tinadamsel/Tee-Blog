@@ -19,30 +19,11 @@
         </div>
     </div>
     <br />
-
-       @*  @if (Model != null)
-            {
-            <div class="justify-content-center p-3">
-                <div class="alert alert-success alert-dismissible fade show">
-                    <button type="button" class="close" data-dismiss="alert">&times;</button>
-                    <strong>Success!</strong> @TempData["Message"]
-                </div>
-            </div>
-         }*@
-            @if (Model != null)
-            {
-                @if (Model != null)
-                {
-                  <div class="justify-content-center p-3">
-                    <div class="alert alert-success alert-dismissible fade show">
-                    <button type="button" class="close" data-dismiss="alert">&times;</button>
-                    <strong>Success!</strong> @TempData["Message"]
-                </div>
-            </div>
-                }
-            }
-        <br /> <br /> 
-
+    @if (TempData["Message"] != null)
+    {
+        var tempDatamessage = (TEEBLOG.Models.Message)TempData["Message"];
+        <partial name="_Message" model="tempDatamessage" />
+    }
     <div class="container">
             @if (Model.Count() > 0)
             {

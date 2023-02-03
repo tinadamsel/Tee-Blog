@@ -38,18 +38,13 @@ namespace TEEBLOG.Controllers
         [HttpPost]
         public async Task<IActionResult> Register(string allDetail)
         {
-            if (allDetail != null)//conditional statement for checks
+            if (allDetail != null)
             {
                 var person = JsonConvert.DeserializeObject<RegisterViewModel>(allDetail);
                
                 if (person != null)
                 {
-                    //if (person.ComfirmPassword != person.Password)
-                    //{
-                    //    return Json(new { isError = true, message = "Password match" });
-                    //}
-                    var result = await _userHelper.CreateUser(person);
-
+                    var result = await _userHelper.CreateUser(person).ConfigureAwait(false);
                     if (result)
                     {
                         var userToken = await _userHelper.CreateUserToken(person.Email);
