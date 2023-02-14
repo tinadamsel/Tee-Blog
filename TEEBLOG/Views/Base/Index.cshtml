@@ -176,12 +176,10 @@
                         
                                 <p class="h6 text-secondary text-center" style="font-size:12px;"> @blog.Categories.Name </p>
                                 <p class="lead text-center" style="font-size:20px; font-family:'Times New Roman', Times, serif; line-height:1.2em;"> <b> @blog.Name</b> </p>
-                                <a class="stretched-link" style="text-decoration: none;" asp-controller="Category" asp-action="Category">
+                                <a class="stretched-link" style="text-decoration: none;" asp-controller="Category" asp-action="BlogByCategory" asp-route-categoryId="@blog.Categories?.Id">
                                    <img src="@blog.Picture" width="100%" style="max-height:50%;" class="img-fluid mx-auto d-block"> <br />
                                    <p class="mx-2 lead text-left">@Html.Raw(@blog.ShortDescription) </p>
                                 </a>
-                                   
-                        
                     </div>
                 }
                 

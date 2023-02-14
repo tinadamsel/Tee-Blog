@@ -60,8 +60,9 @@ namespace TEEBLOG.Controllers
                     _context.Blogs.Update(blog);
                     _context.SaveChanges();
                     //blog.Approved = "Blog Post Approved";
+                    TempData["Message"] = "Blog Post Approved";
                 }
-                TempData["Message"] = "Blog Post Approved";
+                
             }
              return RedirectToAction("SuperAdminBlogPage", "SuperAdmin");
         }

@@ -57,24 +57,20 @@
 
         <div class="col-sm-12 col-xm-12 col-md-6 col-lg-6 col-xl-6 mt-3">
             <div class="card bg-light p-3">
-               @* @using (Html.BeginForm())
-                {
-                    @Html.AntiForgeryToken()*@
                     <div class="container">
                         <div class="row">
-@*                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })*@
                             <div class="col-sm-12 col-xm-12 col-md-6 col-lg-6 col-xl-6">
                                 <div class="form-group">
                                     <label for="Name"> Name </label>
                                     <input type="text" id="name" required class="form-control" />
-                                   @* @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })*@
+                                    <div id="nameError" class="error"></div>
                                 </div>
                             </div>
                             <div class="col-sm-12 col-xm-12 col-md-6 col-lg-6 col-xl-6">
                                 <div class="form-group">
                                     <label for="Email"> Email </label>
                                     <input type="email" id="email" required class="form-control" />
-
+                                     <div id="emailError" class="error"></div>
                                 </div>
                             </div>
                         </div>
@@ -83,7 +79,7 @@
                                 <div class="form-group">
                                     <label for="Subject"> Subject </label>
                                     <input type="text" id="subject" required class="form-control" />
-                                    
+                                <div id="subjectError" class="error"></div>
                                 </div>
                             </div>
                         </div>
@@ -92,6 +88,7 @@
                                 <div class="form-group">
                                     <label for="Message"> Message </label>
                                     <textarea cols="5" rows="5" class="form-control" required id="message" placeholder="Message"> </textarea>
+                                <div id="messageError" class="error"></div>
                                 </div>
                             </div>
                         </div>

@@ -42,19 +42,24 @@ function register() {
     person.Password = $("#password").val();
     person.ConfirmPassword = $("#confirmPassword").val();
 
-    if (person.FirstName == "" || person.FirstName == undefined && person.LastName == "" || person.LastName == undefined) {
+    if (person.FirstName == "" || person.FirstName == undefined && person.LastName == "" || person.LastName == undefined && person.Email == "" || person.Email == undefined && person.Password == "" || person.Password == undefined && person.ConfirmPassword == "" || person.ConfirmPassword == undefined) {
         validateForm("firstName", "Lirst name cannnot be empty");
         validateForm("lastName", "Last name cannnot be empty");
+        validateForm("email", "Email cannnot be empty");
+        validateForm("password", "Password cannnot be empty");
+        validateForm("confirmPassword", "Confirm Password cannnot be empty");
     }
     //if (person.LastName == "" || person.LastName == undefined) {
     //    validateForm("lastName", "Last name cannnot be empty");
     //}
-    if (person.ConfirmPassword !== person.Password) {
-        message = "Password do not match",
-            infoAlert(message);
-    }
+   
     if (person.FirstName != "" && person.LastName != "" && person.Email != "" && person.Password != "" && person.ConfirmPassword != "")
     {
+        if (person.ConfirmPassword !== person.Password) {
+            message = "Password do not match",
+                infoAlert(message);
+            return;
+        }
           var allDetails = JSON.stringify(person);
           $.ajax({
              type: "POST",
@@ -99,6 +104,14 @@ function addblog() {
     post.ShortDescription = $("#shortDes").val();
     post.Description = $("#blogContent").val();
     var blogPix = document.getElementById("picture").files; 
+
+    if (post.Name == "" || post.Name == undefined) {
+        validateForm("name", "Name cannnot be empty");
+        //validateForm("email", "Email name cannnot be empty");
+        //validateForm("subject", "Subject cannnot be empty");
+        //validateForm("message", "Message cannnot be empty");
+        
+    }
     debugger
     if (post.Name != "" && post.Shortdescription != "" && post.Description != "" && blogPix[0] != null && post.Category != "") {
         if(blogPix[0] != null) {
@@ -145,7 +158,15 @@ function AddSupport() {
     support.Name = $("#name").val();
     support.Email = $("#email").val();
     support.Subject = $("#subject").val();
-    support.Message = $("#message").val();
+    support.Message = $("#message").val(); 
+
+    if (support.Name == "" || support.Name == undefined && support.Email == "" || support.Email == undefined && support.Subject == "" || support.Subject == undefined && support.Message == "" || support.Message == undefined) {
+        validateForm("name", "Name cannnot be empty");
+        validateForm("email", "Email name cannnot be empty");
+        validateForm("subject", "Subject cannnot be empty");
+        validateForm("message", "Message cannnot be empty");
+;
+    }
     if (support.Name != "" && support.Email != "" && support.Subject != "" && support.Message != "") {
         var supports = JSON.stringify(support);
         $.ajax({
@@ -317,9 +338,9 @@ function ConvertPictureToBase64(picture) {
 }
 
 
-//$(document).ready(function () {
-//  $('#tableShow').DataTable();
-//});
+$(document).ready(function () {
+ $('#tableShow').DataTable();
+});
     
 
 

@@ -41,7 +41,10 @@ namespace TEEBLOG.Controllers
             if (allDetail != null)
             {
                 var person = JsonConvert.DeserializeObject<RegisterViewModel>(allDetail);
-               
+                //if (person.ComfirmPassword != person.Password)
+                //{
+                //    return Json(new { isError = true, message = "Password do not match"});
+                //}
                 if (person != null)
                 {
                     var result = await _userHelper.CreateUser(person).ConfigureAwait(false);

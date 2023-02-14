@@ -120,10 +120,9 @@ namespace TEEBLOG.Controllers
                     review.isApproved = true;
                     _context.Reviews.Update(review);
                     _context.SaveChanges();
-
-
-                    Message msg = new Message("The Email Address you entered does not exist,try again ", (int)Message.Category.Error);
-                    TempData["Message"] = msg;
+                    TempData["Message"] = "Review Approved";
+                    //Message msg = new Message("Review Accepted", (int)Message.Category.Error);
+                    //TempData["Message"] = msg;
 
                 }
             }
@@ -140,8 +139,7 @@ namespace TEEBLOG.Controllers
                     review.isApproved = false;
                     _context.Reviews.Update(review);
                     _context.SaveChanges();
-                    Message msg = new Message("TReview Declined", (int)Message.Category.Error);
-                    TempData["Message"] = msg;
+                    TempData["Message"] = "Review Declined";
                 }
             }
             return RedirectToAction("AdminReviews", "Reviews");

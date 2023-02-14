@@ -83,10 +83,13 @@ namespace TEEBLOG.Controllers
                 category.Active = true;
                 _context.Categories.Add(category);
                 _context.SaveChanges();
-                category.Success = "Name successfully Added";
-                return RedirectToAction("Category");
+                TempData["Message"] = "Review Approved";
+
+                //category.Success = "Name successfully Added";
+                //return RedirectToAction("Category");
+
             }
-            return View(category);
+            return RedirectToAction("Category");
         }
         [HttpGet]
         public IActionResult Edit(int? id)
